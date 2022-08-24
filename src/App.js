@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/navbar/navbar.component';
+import Footer from './components/footer/footer.component';
+import React from 'react';
+
+const Welcome = React.lazy(() => import('./components/pages/welcome/welcome.component'));
+const SellingTents = React.lazy(() => import('./components/pages/selling-tents/selling-tents.component'));
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='root'>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<React.Suspense fallback='Loading...'> <Welcome /> </React.Suspense>} />
+        <Route path="/selling-tents" element={<React.Suspense fallback='Loading...'> <SellingTents /> </React.Suspense>} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

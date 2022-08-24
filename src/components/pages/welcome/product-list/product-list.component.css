@@ -1,0 +1,355 @@
+*:focus {
+    outline: 0;
+    outline: none;
+}
+
+.container .card {
+    position: relative;
+    width: 75%;
+    height: 0;
+    padding-bottom: 105%;
+    background: #232323;
+    border-radius: 5%;
+    overflow: hidden;
+    box-shadow: 8px 8px 15px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 10%;
+    border: none;
+}
+
+.container .card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: #9bdc28; */
+    background: #585858;
+    clip-path: circle(37% at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before {
+    clip-path: circle(75% at 80% -20%);
+}
+
+.container .card:after {
+    content: 'N H S';
+    position: absolute;
+    top: 30%;
+    left: -10%;
+    width: 120%;
+    font-size: 10em;
+    font-weight: 800;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.05)
+}
+
+.container .card .imgBx {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10000;
+    width: 100%;
+    height: 50%;
+    transition: 0.5s;
+}
+
+.container .card:hover .imgBx {
+    top: 0%;
+    transform: translateY(0%);
+
+}
+
+.container .card .imgBx img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+}
+
+.container .card .contentBx {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+}
+
+.container .card:hover .contentBx {
+    height: 57%;
+}
+
+.container .card .contentBx h2 {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    margin: 0;
+}
+
+.container .card .contentBx .size,
+.container .card .contentBx .color,
+.container .card .contentBx .price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle
+}
+
+.container .card:hover .contentBx .size {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.5s;
+}
+
+.container .card:hover .contentBx .color {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.6s;
+}
+
+.container .card:hover .contentBx .price {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.7s;
+}
+
+.container .card .contentBx .size h3,
+.container .card .contentBx .color h3,
+.container .card .contentBx .price h3 {
+    color: #fff;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 10px;
+    /* margin-top: 10px; */
+}
+
+.container .card .contentBx .size span {
+    width: 40px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    display: inline-block;
+    color: #111;
+    background: #fff;
+    margin: 0 5px;
+    transition: 0.5s;
+    color: #111;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container .card .contentBx .size span:hover {
+    background: #9c9c9c;
+}
+
+.container .card .contentBx .color span {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.container .card .contentBx .color span:nth-child(2) {
+    background: #e7e7e7;
+}
+
+.container .card .contentBx .color span:nth-child(3) {
+    background: #0b38b3;
+}
+
+.container .card .contentBx .color span:nth-child(4) {
+    background: #058b00;
+}
+
+.container .card .contentBx .price span {
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.container .card .contentBx a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #111;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.5s;
+    margin-top: 0;
+}
+
+.container .card:hover .contentBx a {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-delay: 0.75s;
+
+}
+
+.slick-prev {
+    left: -3% !important;
+    z-index: 1;
+}
+
+.slick-next {
+    right: -3% !important;
+    z-index: 1;
+}
+
+.slick-prev:before {
+    color: #000000 !important;
+}
+
+.slick-next:before {
+    color: #000000 !important;
+}
+
+.best-seller-banner {
+    width: 100%;
+    height: 0;
+    padding-bottom: 8%;
+    background: radial-gradient(#4b4b4b, #303030);
+    border-radius: 10px;
+    position: relative;
+}
+
+.best-seller-banner p {
+    position: absolute;
+    color: #FFFFFF;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: inline-flex;
+    align-items: center;
+    left: 5%;
+    top: 0;
+    bottom: 0;
+    font-size: calc(50% + 1.6vw);
+}
+
+.best-seller-banner span {
+    position: absolute;
+    color: #ffffff15;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: -5%;
+    bottom: 0;
+    right: 5%;
+    display: inline-flex;
+    align-items: center;
+    font-size: calc(50% + 5vw);
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.product-announce1 {
+    width: 100%;
+    height: 0;
+    padding-bottom: 55%;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.product-announce1 img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.product-announce2 {
+    width: 100%;
+    height: 0;
+    padding-bottom: 55%;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.product-announce2 img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.product-heap {
+    width: 40%;
+    height: 0;
+    padding-bottom: 40%;
+    border-width: 1px;
+    border-color: #dddddd;
+    border-radius: 10px;
+    position: relative;
+}
+
+.product-heap-img {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.product-heap-description {
+    font-family: 'kanit-extra-light';
+    font-size: calc(40% + 0.5vw);
+}
+
+.product-heap-price {
+    font-size: calc(60% + 1vw);
+    font-weight: bold;
+}
+
+
+@media (max-width: 470px) {
+    .container .card .contentBx h2 {
+        font-size: 5.2vw;
+    }
+
+    .container .card .contentBx .size h3 {
+        font-size: 3vw;
+    }
+
+    .container .card .contentBx .size span {
+        width: 13%;
+        height: 5%;
+        font-size: 2vw;
+    }
+
+    .container .card .contentBx .color h3 {
+        font-size: 3vw;
+    }
+
+    .container .card .contentBx .price h3 {
+        font-size: 3vw;
+    }
+
+    .container .card .contentBx .price span {
+        font-size: 4vw;
+    }
+
+    .container .card .contentBx a {
+        padding: 5px 10px;
+        font-size: 4vw;
+    }
+}

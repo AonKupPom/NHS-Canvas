@@ -1,0 +1,250 @@
+.next-promotion {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.paper-title {
+    font-size: calc(50% + 1.1vw);
+    font-weight: bold;
+    color: #ffffff;
+    text-align: start;
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    transition: font-size 0.5s, top 0.5s;
+}
+
+.month-promotion {
+    width: 100%;
+    height: 0;
+    padding-bottom: 22%;
+    background: radial-gradient(#5f5f5f, #3b3b3b);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.month-promotion img {
+    width: 35%;
+    position: absolute;
+    top: -30%;
+    left: 60%;
+    filter: drop-shadow(6px 6px 7px rgba(0, 0, 0, 0.4));
+    transition: width 0.5s, top 0.5s;
+}
+
+.month-promotion:hover img {
+    width: 38%;
+    top: -45%;
+}
+
+.month-promotion:hover .paper-title {
+    font-size: calc(50% + 1.3vw);
+    top: 10%;
+}
+
+.good-feedback {
+    width: 100%;
+    height: 0;
+    padding-bottom: 22%;
+    background: radial-gradient(#868686, #696969);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.good-feedback img {
+    width: 38%;
+    position: absolute;
+    left: 55%;
+    top: 0;
+    filter: drop-shadow(6px 6px 7px rgba(0, 0, 0, 0.4));
+    transition: width 0.5s, top 0.5s;
+}
+
+.good-feedback:hover img {
+    width: 41%;
+    top: -15%;
+}
+
+.good-feedback:hover .paper-title {
+    font-size: calc(50% + 1.3vw);
+    top: 10%;
+}
+
+.exclusive-partner {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background: radial-gradient(#630000, #3f2900);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.exclusive-partner p {
+    font-size: calc(50% + 1.1vw);
+    font-weight: bold;
+    color: #ffffff;
+    text-align: start;
+    margin-bottom: 0;
+    padding-left: 10%;
+    transition: font-size 0.5s, top 0.5s;
+}
+
+.exclusive-partner img {
+    width: 80%;
+    position: absolute;
+    bottom: 0;
+    filter: drop-shadow(6px -1px 7px rgba(0, 0, 0, 0.4));
+    transition: width 0.5s;
+    border-bottom-left-radius: 10px;
+}
+
+.exclusive-partner:hover img {
+    width: 87%;
+}
+
+.exclusive-partner:hover p {
+    font-size: calc(50% + 1.3vw);
+    top: 10%;
+}
+
+.popular-brand {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background: radial-gradient(#656d54, #3e4430);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.popular-brand p {
+    font-size: calc(50% + 1.1vw);
+    color: #FFFFFF;
+    text-align: start;
+    margin-bottom: 0;
+    padding-left: 10%;
+    transition: font-size 0.5s, top 0.5s;
+    font-weight: bold;
+}
+
+.popular-brand img {
+    width: 75%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 3%;
+    filter: drop-shadow(6px -1px 7px rgba(0, 0, 0, 0.4));
+    transition: width 0.5s;
+    border-bottom-left-radius: 10px;
+}
+
+.popular-brand:hover img {
+    width: 80%;
+}
+
+.popular-brand:hover p {
+    font-size: calc(50% + 1.3vw);
+    top: 10%;
+}
+
+.promotion-announce1 {
+    width: 100%;
+    height: 0;
+    padding-bottom: 55%;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.promotion-announce1 img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.promotion-announce2 {
+    width: 100%;
+    height: 0;
+    padding-bottom: 55%;
+    background: #dac7a0;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.promotion-announce2 img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.promotion-heap {
+    width: 40%;
+    height: 0;
+    padding-bottom: 40%;
+    border-width: 1px;
+    border-color: #dddddd;
+    border-radius: 10px;
+    position: relative;
+}
+
+.promotion-heap-img {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.promotion-heap-description {
+    font-family: 'kanit-extra-light';
+    font-size: calc(40% + 0.5vw);
+}
+
+.promotion-heap-price {
+    font-size: calc(60% + 1vw);
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .paper-title {
+        font-size: calc(50% + 2vw);
+    }
+
+    .exclusive-partner p {
+        font-size: calc(50% + 2vw);
+    }
+
+    .popular-brand p {
+        font-size: calc(50% + 2vw);
+    }
+
+    .month-promotion:hover .paper-title {
+        font-size: calc(50% + 2.2vw);
+        top: 10%;
+    }
+
+    .good-feedback:hover .paper-title {
+        font-size: calc(50% + 2.2vw);
+        top: 10%;
+    }
+
+    .exclusive-partner:hover p {
+        font-size: calc(50% + 2.2vw);
+        top: 10%;
+    }
+
+    .popular-brand:hover p {
+        font-size: calc(50% + 2.2vw);
+        top: 10%;
+    }
+}
