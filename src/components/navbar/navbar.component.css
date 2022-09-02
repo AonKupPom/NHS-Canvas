@@ -18,9 +18,14 @@
     }
 }
 
-a, a:hover, a:focus, a:active {
+a {
     text-decoration: none;
     color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #444444;
 }
 
 .nav-search {
@@ -117,4 +122,16 @@ a, a:hover, a:focus, a:active {
 .icon-hov:hover #dropdown-icon {
     color: #414141;
     cursor: pointer;
+}
+
+.nav-items {
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #666666;
+}
+
+.active {
+    color: #000000;
 }

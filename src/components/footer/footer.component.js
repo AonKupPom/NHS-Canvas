@@ -99,7 +99,7 @@ export default function Footer() {
                             <MDBCol md="2" lg="2" xl="2" className='mb-4 ar-auto'>
                                 <h6 className='text-uppercase fw-bold mb-4'>เพิ่มเพื่อน</h6>
                                 <div className='d-flex justify-content-center'>
-                                    <img src={require('../../assets/img/qrcode.png')} alt='' draggable='false'></img>
+                                    <img src={require('../../assets/img/qrcode.png')} alt='' id='qrcode' draggable='false'></img>
                                 </div>
                             </MDBCol>
                         </MDBRow>

@@ -1,22 +1,22 @@
 import React from 'react';
 import Container from 'react-bootstrap/esm/Container';
-import FilterSellingTents from './filter-menu/filter-selling-tents.component';
+import FilterRentTents from './filter-menu/filter-rent-tents.component';
 import Row from 'react-bootstrap/esm/Row'
 import Col from 'react-bootstrap/esm/Col';
-import './selling-tents.component.css';
-import SellingTentsList from './tents-list/selling-tents-list.component';
+import './rent-tents.component.css';
+import RentTentsList from './tents-list/rent-tents-list.component';
 
-const SellingTents = () => {
+const RentTents = () => {
 
     return (
         <>
             <Container className='px-4'>
                 <Row className='mb-5'>
                     <Col md='4' lg='3'>
-                        <FilterSellingTents />
+                        <FilterRentTents />
                     </Col>
                     <Col md='8' lg='9'>
-                        <SellingTentsList />
+                        <RentTentsList />
                     </Col>
                 </Row>
             </Container>
@@ -24,4 +24,4 @@ const SellingTents = () => {
     )
 }
 
-export default SellingTents;
+export default RentTents;

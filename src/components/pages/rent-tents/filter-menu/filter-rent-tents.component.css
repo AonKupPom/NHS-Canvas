@@ -1,0 +1,22 @@
+.filter-title {
+    font-size: calc(60% + 1.5vmin);
+    font-weight: bold;
+}
+
+.filter-category {
+    font-size: calc(60% + 1vmin);
+    font-weight: 500;
+}
+
+.filter-list {
+    display: flex;
+    align-items: center;
+    font-size: calc(60% + 1vmin);
+    font-family: 'kanit-light';
+}
+
+.filter-list input {
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+}

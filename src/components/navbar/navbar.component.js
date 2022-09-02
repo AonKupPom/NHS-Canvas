@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as faSol from '@fortawesome/free-solid-svg-icons'
 import * as faReg from '@fortawesome/free-regular-svg-icons';
 import * as bi from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const navbar = () => {
   return (
@@ -21,9 +21,9 @@ const navbar = () => {
           <Row className="justify-content-md-center px-4">
             <Navbar expand="xl">
               <Navbar.Brand className='mt-4'>
-                <Link to="/">
+                <NavLink to="/">
                   <img src={require('../../assets/img/NHS LOGO HAND.png')} width='80px' className='mx-auto' draggable='false' alt=''></img>
-                </Link>
+                </NavLink>
                 <p>NHS Canvas.</p>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="navbarScroll" />
@@ -50,32 +50,30 @@ const navbar = () => {
             </Navbar>
           </Row>
           <Row className='px-4 mt-4'>
-            <Navbar expand="xl" className='justify-content-center'>
+            <Navbar expand="xl" className='justify-content-center mb-5'>
               <Navbar.Collapse className='justify-content-md-center'>
                 <Nav className="my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-                  <div className='px-5'>
-                    <Nav.Link>
-                      <Link to="/selling-tents">
+                  <div className='px-5 nav-items'>
+                      <NavLink to='/selling-tents' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
                         <Row>
                           <bi.Diagram3Fill size={50} />
                         </Row>
                         <Row className='justify-content-center mt-2'>
                           ซื้อเต็นท์
                         </Row>
-                      </Link>
-                    </Nav.Link>
+                      </NavLink>
                   </div>
-                  <div className='px-5'>
-                    <Nav.Link href="#action2">
+                  <div className='px-5 nav-items'>
+                    <NavLink to="/rent-tents">
                       <Row>
                         <bi.Diagram3 size={50} />
                       </Row>
                       <Row className='justify-content-center mt-2'>
                         เช่าเต็นท์
                       </Row>
-                    </Nav.Link>
+                    </NavLink>
                   </div>
-                  <div className='px-5'>
+                  <div className='px-5 nav-items'>
                     <div className='icon-hov'>
                       <Row className='justify-content-center mt-2'>
                         <bi.TextareaResize size={50} id='dropdown-icon' />
@@ -94,35 +92,35 @@ const navbar = () => {
                       </Row>
                     </div>
                   </div>
-                  <div className='px-5'>
-                    <Nav.Link href="#action3">
+                  <div className='px-5 nav-items'>
+                    <NavLink to="/action3">
                       <Row>
                         <bi.Truck size={50} />
                       </Row>
                       <Row className='justify-content-center mt-2'>
                         บริการกางเต็นท์
                       </Row>
-                    </Nav.Link>
+                    </NavLink>
                   </div>
-                  <div className='px-5'>
-                    <Nav.Link href="#action4">
+                  <div className='px-5 nav-items'>
+                    <NavLink to="/action4">
                       <Row>
                         <bi.BoxSeam size={50} />
                       </Row>
                       <Row className='justify-content-center mt-2'>
                         อุปกรณ์เสริม
                       </Row>
-                    </Nav.Link>
+                    </NavLink>
                   </div>
-                  <div className='px-5'>
-                    <Nav.Link href="#action5">
+                  <div className='px-5 nav-items'>
+                    <NavLink to="/action5">
                       <Row>
                         <bi.Gift size={50} />
                       </Row>
                       <Row className='justify-content-center mt-2'>
                         โปรโมชัน
                       </Row>
-                    </Nav.Link>
+                    </NavLink>
                   </div>
                 </Nav>
               </Navbar.Collapse>

@@ -4,6 +4,11 @@
 }
 
 @font-face {
+    font-family: "kanit-light";
+    src: local("kanit-light"), url('./assets/fonts/kanit/KANIT-LIGHT.TTF') format("truetype");
+}
+
+@font-face {
     font-family: "kanit-extra-light";
     src: local("kanit-extra-light"), url('./assets/fonts/kanit/KANIT-EXTRALIGHT.TTF') format("truetype");
 }
