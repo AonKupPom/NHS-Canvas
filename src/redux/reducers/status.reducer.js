@@ -2,7 +2,7 @@ import { FETCH_START, FETCH_END, FETCH_ERROR } from "../actions/status.action"
 
 const initialState = {
     loading: false,
-    error: ''
+    error: null
 }
 
 export const statusReducer = (state = initialState, action) => {

@@ -4,6 +4,7 @@ import { login } from '../../services/auth.service'
 export const SET_AUTH = 'SET_AUTH'
 
 export const setAuth = (user) => {
+    localStorage.setItem("currentUser", user)
     return {
         type: SET_AUTH,
         payload: user
@@ -17,13 +18,14 @@ export const fetchAuthAsync = (userName, password) => {
             const user = await login({ userName, password })
 
             if (user) {
-                dispatch(setAuth(user))
-                dispatch(errorFetch(''))
+                localStorage.setItem("currentUser", user.token)
+                dispatch(setAuth(user.token))
+                dispatch(errorFetch(null))
                 dispatch(endFetch())
             }
         } catch (error) {
             dispatch(setAuth(null))
-            dispatch(errorFetch(error))
+            dispatch(errorFetch(error.message))
             dispatch(endFetch())
         }
     }

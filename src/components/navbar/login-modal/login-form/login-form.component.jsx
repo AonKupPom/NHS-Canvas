@@ -5,8 +5,27 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { useState, useContext } from "react";
+import { useDispatch } from "react-redux";
+import { setAuth } from "./../../../../redux/actions/auth.action";
+import loginModalContext from "../../login-modal-context/loginModal.context";
+import { login } from "../../../../services/auth.service";
 
 const LoginFormComponent = () => {
+  const { setLoginModalShow } = useContext(loginModalContext);
+  const [userName, setUserName] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const loginSubmit = async () => {
+    const user = await login({ userName, password });
+    if (user) {
+      dispatch(setAuth(user.token));
+      setLoginModalShow(false);
+    }
+  };
+
   return (
     <>
       <div className="d-flex justify-content-center mb-3">
@@ -23,6 +42,7 @@ const LoginFormComponent = () => {
                 className="p-2"
                 type="text"
                 placeholder="ชื่อผู้ใช้"
+                onChange={(e) => setUserName(e.target.value)}
               />
             </Form.Group>
           </Col>
@@ -34,6 +54,7 @@ const LoginFormComponent = () => {
                 className="p-2"
                 type="password"
                 placeholder="รหัสผ่าน"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
           </Col>
@@ -49,8 +70,10 @@ const LoginFormComponent = () => {
           <Col className="d-flex justify-content-center">
             <Button
               variant="primary"
-              type="submit"
               className="submit-login-button"
+              onClick={() => {
+                loginSubmit();
+              }}
             >
               เข้าสู่ระบบ
             </Button>

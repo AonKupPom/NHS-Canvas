@@ -1,7 +1,7 @@
 import { SET_AUTH } from "../actions/auth.action"
 
 const initialState = {
-    user: null
+    user: localStorage.getItem("currentUser")
 }
 
 export const authReducer = (state = initialState, action) => {

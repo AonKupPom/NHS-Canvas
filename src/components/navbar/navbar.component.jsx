@@ -14,10 +14,11 @@ import * as faReg from "@fortawesome/free-regular-svg-icons";
 import * as bi from "react-bootstrap-icons";
 import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoginModalComponent from "./login-modal/login-modal.component";
 import loginModalContext from "./login-modal-context/loginModal.context";
 import CartModalComponent from "./cart-modal/cart-modal.component";
+import { setAuth } from "../../redux/actions/auth.action";
 
 const NavbarComponent = () => {
   const [loginModalShow, setLoginModalShow] = useState(false);
@@ -27,6 +28,14 @@ const NavbarComponent = () => {
 
   const cart = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+
+  const logout = () => {
+    console.log(localStorage.removeItem("cart"));
+    dispatch(setAuth(null));
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("cart");
+  }
 
   return (
     <>
@@ -91,7 +100,7 @@ const NavbarComponent = () => {
                     className="btn-user mr-4"
                     onClick={(e) => {
                       e.currentTarget.blur();
-                      setLoginModalShow(true);
+                      logout();
                     }}
                   >
                     <FontAwesomeIcon
