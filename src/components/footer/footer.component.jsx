@@ -6,7 +6,7 @@ import * as bi from 'react-bootstrap-icons'
 import './footer.component.css'
 import { Link } from "react-router-dom";
 
-export default function Footer() {
+export default function FooterComponent() {
     return (
             <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
                 <section className='d-flex align-items-center px-5'>
