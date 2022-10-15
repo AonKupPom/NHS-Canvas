@@ -7,11 +7,17 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import * as tentService from "./../../../../services/tent.service";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../../redux/actions/cart.action";
+import LoginModalComponent from "../../../navbar/login-modal/login-modal.component";
+import loginModalContext from "../../../navbar/login-modal-context/loginModal.context";
 
 const RentTentsList = () => {
+  const [loginModalShow, setLoginModalShow] = useState(false);
+  const [loginButtonTab, setLoginButtonTab] = useState("login-button-tab");
+  const [loginFormTab, setLoginFormTab] = useState("login-form-tab");
   const [tents, setTents] = useState([]);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     tentService.getAllTents().then((res) => {
@@ -20,6 +26,11 @@ const RentTentsList = () => {
   }, []);
 
   const dispath = useDispatch();
+  const startLoginModal = () => {
+    setLoginModalShow(true);
+    setLoginButtonTab("login-button-tab");
+    setLoginFormTab("login-form-tab");
+  };
 
   // const shoot = () => {
   //     var bodyFormData = new FormData();
@@ -75,7 +86,7 @@ const RentTentsList = () => {
                 <Button
                   variant="outline-dark"
                   align="center"
-                  onClick={() => dispath(addToCart({ ...items, quantity: 1 }))}
+                  onClick={() => {!user ? startLoginModal() : dispath(addToCart({ ...items, quantity: 1 }))}}
                 >
                   <FontAwesomeIcon
                     icon={faSol.faShoppingCart}
@@ -89,6 +100,19 @@ const RentTentsList = () => {
           );
         })}
       </Row>
+
+      <loginModalContext.Provider
+        value={{
+          loginModalShow,
+          loginButtonTab,
+          loginFormTab,
+          setLoginModalShow,
+          setLoginButtonTab,
+          setLoginFormTab,
+        }}
+      >
+        <LoginModalComponent />
+      </loginModalContext.Provider>
     </>
   );
 };

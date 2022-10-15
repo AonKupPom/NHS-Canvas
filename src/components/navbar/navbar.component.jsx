@@ -47,6 +47,12 @@ const NavbarComponent = () => {
     dispatch(removeAllProduct());
   };
 
+  const startLoginModal = () => {
+    setLoginModalShow(true);
+    setLoginButtonTab("login-button-tab");
+    setLoginFormTab("login-form-tab");
+  };
+
   return (
     <>
       <Container>
@@ -91,9 +97,7 @@ const NavbarComponent = () => {
                     className="btn-user mr-4"
                     onClick={(e) => {
                       e.currentTarget.blur();
-                      setLoginModalShow(true);
-                      setLoginButtonTab("login-button-tab");
-                      setLoginFormTab("login-form-tab");
+                      startLoginModal();
                     }}
                   >
                     <FontAwesomeIcon
@@ -128,7 +132,7 @@ const NavbarComponent = () => {
                   className="btn-cart mr-4"
                   onClick={(e) => {
                     e.currentTarget.blur();
-                    setCartModalShow(true);
+                    !user ? startLoginModal() : setCartModalShow(true);
                   }}
                 >
                   <span className="btn-cart-text">ชำระสินค้า </span>
