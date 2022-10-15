@@ -25,12 +25,10 @@ const LoginButtonComponent = () => {
 
   const onSuccess = (res) => {
     setProfile(res);
-    console.log("Success : ", res);
   };
 
   const onError = (res) => {
     setProfile(null);
-    console.log("Error : ", res);
   };
 
   const logOut = () => {

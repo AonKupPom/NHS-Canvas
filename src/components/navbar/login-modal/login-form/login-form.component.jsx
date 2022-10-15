@@ -21,7 +21,7 @@ const LoginFormComponent = () => {
   const loginSubmit = async () => {
     const user = await login({ userName, password });
     if (user) {
-      dispatch(setAuth(user.token));
+      dispatch(setAuth(user));
       setLoginModalShow(false);
     }
   };

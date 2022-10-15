@@ -13,12 +13,15 @@ import * as faSol from "@fortawesome/free-solid-svg-icons";
 import * as faReg from "@fortawesome/free-regular-svg-icons";
 import * as bi from "react-bootstrap-icons";
 import { NavLink, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoginModalComponent from "./login-modal/login-modal.component";
 import loginModalContext from "./login-modal-context/loginModal.context";
 import CartModalComponent from "./cart-modal/cart-modal.component";
-import { setAuth } from "../../redux/actions/auth.action";
+import { Logout, setCurrentUser } from "../../redux/actions/auth.action";
+import { removeAllProduct } from "../../redux/actions/cart.action";
+import jwt_decode from "jwt-decode";
+import { getUserById } from "../../services/user.service";
 
 const NavbarComponent = () => {
   const [loginModalShow, setLoginModalShow] = useState(false);
@@ -28,14 +31,21 @@ const NavbarComponent = () => {
 
   const cart = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const userID = localStorage.getItem("currentUser")
+      ? jwt_decode(localStorage.getItem("currentUser"))._id
+      : null;
+    getUserById(userID).then((res) => {
+      dispatch(setCurrentUser(res));
+    });
+  }, [dispatch]);
 
   const logout = () => {
-    console.log(localStorage.removeItem("cart"));
-    dispatch(setAuth(null));
-    localStorage.removeItem("currentUser");
-    localStorage.removeItem("cart");
-  }
+    dispatch(Logout());
+    dispatch(removeAllProduct());
+  };
 
   return (
     <>
