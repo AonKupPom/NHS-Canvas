@@ -1,6 +1,6 @@
 import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../../redux/actions/cart.action";
+import { removeFromCart } from "./../../../redux/actions/cart.action";
 
 const CartModalComponent = ({ cart, cartModalShow, setCartModalShow }) => {
   const dispath = useDispatch();

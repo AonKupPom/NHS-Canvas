@@ -8,8 +8,8 @@ import Button from "react-bootstrap/Button";
 import { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { setAuth } from "./../../../../redux/actions/auth.action";
-import loginModalContext from "../../login-modal-context/loginModal.context";
-import { login } from "../../../../services/auth.service";
+import loginModalContext from "./../login-modal-context/loginModal.context";
+import { login } from "./../../../../services/auth.service";
 
 const LoginFormComponent = () => {
   const { setLoginModalShow } = useContext(loginModalContext);

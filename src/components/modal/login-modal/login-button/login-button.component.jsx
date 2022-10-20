@@ -7,7 +7,8 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import * as bi from "react-bootstrap-icons";
-import loginModalContext from "../../login-modal-context/loginModal.context";
+import loginModalContext from "./../login-modal-context/loginModal.context";
+import "./login-button.component.css"
 
 const LoginButtonComponent = () => {
   const { setLoginButtonTab, setLoginFormTab } = useContext(loginModalContext);

@@ -1,0 +1,12 @@
+.login-modal-link {
+    color: #437fda;
+}
+
+.login-modal-link:hover {
+    color: #0a4397;
+}
+
+.submit-login-button {
+    width: 170px;
+    border-radius: 40px;
+}

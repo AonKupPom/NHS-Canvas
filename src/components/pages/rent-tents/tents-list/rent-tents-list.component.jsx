@@ -9,8 +9,8 @@ import * as tentService from "./../../../../services/tent.service";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../../redux/actions/cart.action";
-import LoginModalComponent from "../../../navbar/login-modal/login-modal.component";
-import loginModalContext from "../../../navbar/login-modal-context/loginModal.context";
+import LoginModalComponent from "./../../../modal/login-modal/login-modal.component";
+import loginModalContext from "./../../../modal/login-modal/login-modal-context/loginModal.context";
 
 const RentTentsList = () => {
   const [loginModalShow, setLoginModalShow] = useState(false);

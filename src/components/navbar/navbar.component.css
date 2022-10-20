@@ -30,27 +30,6 @@
     }
 }
 
-@keyframes login-change-tab {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-460px);
-        display: none;
-    }
-}
-
-@keyframes login-back {
-    0% {
-        transform: translateX(-460px);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -180,7 +159,6 @@ a:hover {
     animation: dropdown-menu 0.6s;
 }
 
-
 .nav-items {
     top: 0;
     bottom: 0;
@@ -193,44 +171,6 @@ a:hover {
     color: #000000;
 }
 
-.modal-content {
-    font-family: 'kanit';
-    max-width: 500px;
-}
-
-.modal-header {
-    border-bottom: 0 none;
-}
-
-.modal-body {
-    position: relative;
-    overflow: hidden;
-    height: 310px;
-}
-
-.modal-footer {
-    border-top: 0 none;
-}
-
-.btn-login-menu {
-    width: 90% !important;
-    height: 50px !important;
-    border-radius: 30px !important;
-    font-size: calc(60% + 1.1vmin) !important;
-}
-
-.login-modal-link {
-    color: #437fda;
-}
-
-.login-modal-link:hover {
-    color: #0a4397;
-}
-
-.google-login {
-    font-family: 'kanit' !important;
-}
-
 #cart-modal {
     position: absolute;
     top: -30%;
@@ -240,90 +180,4 @@ a:hover {
     z-index: 10040;
     overflow: auto;
     overflow-y: auto;
-}
-
-.login-button-tab {
-    position: absolute;
-    left: 15px;
-    right: 15px;
-}
-
-.login-button-pass {
-    position: absolute;
-    left: 15px;
-    right: 15px;
-    animation: login-change-tab 0.7s;
-    animation-fill-mode: forwards;
-}
-
-.login-button-back {
-    animation: login-back 0.7s;
-    animation-fill-mode: forwards;
-}
-
-.login-form-tab {
-    position: absolute;
-    top: 16px;
-    left: 500px;
-    width: 83%;
-}
-
-.login-form-pass {
-    position: absolute;
-    top: 16px;
-    left: 500px;
-    width: 83%;
-    animation: login-change-tab 0.7s;
-    animation-fill-mode: forwards;
-}
-
-.login-form-back {
-    position: absolute;
-    top: 16px;
-    left: 500px;
-    width: 83%;
-    animation: login-back 0.7s;
-    animation-fill-mode: forwards;
-}
-
-.modal-back-button {
-    cursor: pointer;
-    color: #878a8d;
-}
-
-.modal-back-button:hover {
-    color: #000000;
-}
-
-.submit-login-button {
-    width: 170px;
-    border-radius: 40px;
-}
-
-@media (max-width: 420px) {
-    .login-form-tab {
-        width: 80%;
-    }
-    
-    .login-form-pass {
-        width: 80%;
-    }
-    
-    .login-form-back {
-        width: 80%;
-    }
-}
-
-@media (max-width: 360px) {
-    .login-form-tab {
-        width: 75%;
-    }
-    
-    .login-form-pass {
-        width: 75%;
-    }
-    
-    .login-form-back {
-        width: 75%;
-    }
 }

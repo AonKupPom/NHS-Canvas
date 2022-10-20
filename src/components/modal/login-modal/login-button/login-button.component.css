@@ -1,0 +1,10 @@
+.btn-login-menu {
+    width: 90% !important;
+    height: 50px !important;
+    border-radius: 30px !important;
+    font-size: calc(60% + 1.1vmin) !important;
+}
+
+.google-login {
+    font-family: 'kanit' !important;
+}
