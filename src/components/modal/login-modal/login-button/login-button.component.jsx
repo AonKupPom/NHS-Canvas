@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { gapi } from "gapi-script";
-import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as faSol from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
@@ -8,12 +8,19 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import * as bi from "react-bootstrap-icons";
 import loginModalContext from "./../login-modal-context/loginModal.context";
-import "./login-button.component.css"
+import "./login-button.component.css";
+import { googleLogin } from "../../../../services/auth.service";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuth } from "../../../../redux/actions/auth.action";
 
 const LoginButtonComponent = () => {
-  const { setLoginButtonTab, setLoginFormTab } = useContext(loginModalContext);
+  const { setLoginButtonTab, setLoginFormTab, setLoginModalShow } =
+    useContext(loginModalContext);
+
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  const [profile, setProfile] = useState(null);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
   useEffect(() => {
     const initClient = () => {
       gapi.client.init({
@@ -24,16 +31,26 @@ const LoginButtonComponent = () => {
     gapi.load("client:auth2", initClient);
   }, [clientId]);
 
-  const onSuccess = (res) => {
-    setProfile(res);
+  const onSuccess = async (res) => {
+    if (!user) {
+      var auth2 = gapi.auth2.getAuthInstance();
+      if (auth2 != null) {
+        auth2.signOut().then(auth2.disconnect().then());
+      }
+    }
+    const userData = {
+      email: res.profileObj.email,
+      firstName: res.profileObj.givenName,
+      lastName: res.profileObj.familyName,
+    };
+    const userGoogle = await googleLogin(userData);
+    if (userGoogle) {
+      dispatch(setAuth(userGoogle));
+    }
   };
 
   const onError = (res) => {
-    setProfile(null);
-  };
-
-  const logOut = () => {
-    setProfile(null);
+    console.log("Error : ", res);
   };
 
   return (
@@ -62,42 +79,34 @@ const LoginButtonComponent = () => {
             </Col>
           </Row>
         </Button>
-        {profile ? (
-          <GoogleLogout
-            className="btn-login-menu my-2 google-login"
-            clientId={clientId}
-            buttonText="ออกจากระบบ"
-            onLogoutSuccess={logOut}
-          ></GoogleLogout>
-        ) : (
-          <GoogleLogin
-            render={(renderProps) => (
-              <Button
-                variant="danger"
-                onClick={() => {
-                  renderProps.onClick();
-                }}
-                disabled={renderProps.disabled}
-                className="btn-login-menu my-2"
-              >
-                <Row className="align-items-center">
-                  <Col xs="3">
-                    <bi.Google size={30} className="mr-3" />
-                  </Col>
-                  <Col xs="9" className="d-flex justify-content-start">
-                    ลงชื่อเข้าใช้ด้วย Google
-                  </Col>
-                </Row>
-              </Button>
-            )}
-            clientId={clientId}
-            buttonText="ลงชื่อเข้าใช้ด้วย Google"
-            onSuccess={onSuccess}
-            onFailure={onError}
-            cookiePolicy={"single_host_origin"}
-            isSignedIn={true}
-          />
-        )}
+        <GoogleLogin
+          render={(renderProps) => (
+            <Button
+              variant="danger"
+              onClick={() => {
+                renderProps.onClick();
+                setLoginModalShow(false);
+              }}
+              disabled={renderProps.disabled}
+              className="btn-login-menu my-2"
+            >
+              <Row className="align-items-center">
+                <Col xs="3">
+                  <bi.Google size={30} className="mr-3" />
+                </Col>
+                <Col xs="9" className="d-flex justify-content-start">
+                  ลงชื่อเข้าใช้ด้วย Google
+                </Col>
+              </Row>
+            </Button>
+          )}
+          clientId={clientId}
+          buttonText="ลงชื่อเข้าใช้ด้วย Google"
+          onSuccess={onSuccess}
+          onFailure={onError}
+          cookiePolicy={"single_host_origin"}
+          isSignedIn={true}
+        />
         <Button variant="primary" className="btn-login-menu  my-2">
           <Row className="align-items-center">
             <Col xs="3">

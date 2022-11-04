@@ -22,6 +22,7 @@ import { Logout, setCurrentUser } from "../../redux/actions/auth.action";
 import { removeAllProduct } from "../../redux/actions/cart.action";
 import jwt_decode from "jwt-decode";
 import { getUserById } from "../../services/user.service";
+import { gapi } from "gapi-script";
 
 const NavbarComponent = () => {
   const [loginModalShow, setLoginModalShow] = useState(false);
@@ -32,6 +33,7 @@ const NavbarComponent = () => {
   const cart = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
   useEffect(() => {
     const userID = localStorage.getItem("currentUser")
@@ -42,9 +44,23 @@ const NavbarComponent = () => {
     });
   }, [dispatch]);
 
+  useEffect(() => {
+    const initClient = () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  }, [clientId]);
+
   const logout = () => {
     dispatch(Logout());
     dispatch(removeAllProduct());
+    var auth2 = gapi.auth2.getAuthInstance();
+    if (auth2 != null) {
+      auth2.signOut().then(auth2.disconnect().then());
+    }
   };
 
   const startLoginModal = () => {
