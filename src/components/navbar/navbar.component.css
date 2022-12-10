@@ -170,14 +170,3 @@ a:hover {
 .active {
     color: #000000;
 }
-
-#cart-modal {
-    position: absolute;
-    top: -30%;
-    right: -30%;
-    bottom: 0;
-    left: 0;
-    z-index: 10040;
-    overflow: auto;
-    overflow-y: auto;
-}

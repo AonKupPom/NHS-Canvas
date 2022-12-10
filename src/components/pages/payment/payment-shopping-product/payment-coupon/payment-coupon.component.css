@@ -1,0 +1,9 @@
+.payment-coupon {
+    padding: 20px;
+    border: solid 1px #b4b4b4;
+    border-radius: 10px;
+}
+
+.btn-coupon {
+    width: 100%;
+}

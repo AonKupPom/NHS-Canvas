@@ -9,9 +9,6 @@ import { useSelector } from "react-redux";
 const Welcome = React.lazy(() =>
   import("./components/pages/welcome/welcome.component")
 );
-const TestComponent = React.lazy(() =>
-  import("./components/pages/test-component/test.component")
-);
 const SellingTents = React.lazy(() =>
   import("./components/pages/selling-tents/selling-tents.component")
 );
@@ -22,6 +19,9 @@ const SellingTentsProduct = React.lazy(() =>
 );
 const RentTents = React.lazy(() =>
   import("./components/pages/rent-tents/rent-tents.component")
+);
+const Payment = React.lazy(() =>
+  import("./components/pages/payment/payment.component")
 );
 
 function App() {
@@ -36,15 +36,6 @@ function App() {
             <React.Suspense fallback="Loading...">
               {" "}
               <Welcome />{" "}
-            </React.Suspense>
-          }
-        />
-        <Route
-          path="test"
-          element={
-            <React.Suspense fallback="Loading...">
-              {" "}
-              <TestComponent />{" "}
             </React.Suspense>
           }
         />
@@ -72,6 +63,15 @@ function App() {
             <React.Suspense fallback="Loading...">
               {" "}
               <RentTents />{" "}
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/payment"
+          element={
+            <React.Suspense fallback="Loading...">
+              {" "}
+              <Payment />{" "}
             </React.Suspense>
           }
         />

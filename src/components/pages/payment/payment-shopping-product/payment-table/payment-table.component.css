@@ -1,0 +1,12 @@
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.plus-minus {
+    cursor: pointer;
+}
+
+.payment-product-detail {
+    font-size: calc(60% + 1.3vmin);
+    font-weight: bold;
+}

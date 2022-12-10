@@ -5,5 +5,31 @@
 
 .empty-basket-shopping {
     font-size: 25px;
-    color: #b1b1b1;
+    /* color: #b1b1b1; */
+    opacity: 30%;
+}
+
+#cart-modal {
+    top: -20px;
+    right: -15%;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.plus-minus {
+    cursor: pointer;
+}
+
+.btn-pay {
+    width: 130px;
+    border-radius: 30px;
+}
+
+@media (max-width: 1199px){
+    #cart-modal {
+        top: auto;
+        right: auto;
+    }
 }
