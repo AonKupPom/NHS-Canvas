@@ -34,10 +34,11 @@ const NavbarComponent = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  const ADMIN = "610064006d0069006e00";
 
   useEffect(() => {
-    const userID = localStorage.getItem("currentUser")
-      ? jwt_decode(localStorage.getItem("currentUser"))._id
+    const userID = localStorage.getItem("Y3VycmVudFVzZXI=")
+      ? jwt_decode(localStorage.getItem("Y3VycmVudFVzZXI="))._X2lk
       : null;
     getUserById(userID).then((res) => {
       dispatch(setCurrentUser(res));
@@ -61,6 +62,7 @@ const NavbarComponent = () => {
     if (auth2 != null) {
       auth2.signOut().then(auth2.disconnect().then());
     }
+    // navigate("/");
   };
 
   const startLoginModal = () => {
@@ -254,7 +256,7 @@ const NavbarComponent = () => {
                     <Row className="justify-content-center mt-2">โปรโมชัน</Row>
                   </NavLink>
                 </div>
-                {!user ? null : (
+                {user?.role === ADMIN ? (
                   <div className="px-5 nav-items">
                     <div className="icon-hov">
                       <Row className="justify-content-center mt-2">
@@ -277,7 +279,7 @@ const NavbarComponent = () => {
                       </Row>
                     </div>
                   </div>
-                )}
+                ) : null}
               </Nav>
             </Navbar.Collapse>
           </Navbar>

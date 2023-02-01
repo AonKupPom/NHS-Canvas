@@ -1,0 +1,12 @@
+.modal-title {
+    color: #505050;
+}
+
+#coupon-modal-body {
+    height: 40%;
+}
+
+#btnUseDiscount {
+    font-size: calc(60% + 0.7vmin);
+    height: 38px;
+}

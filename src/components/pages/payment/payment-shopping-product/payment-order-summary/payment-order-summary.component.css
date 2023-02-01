@@ -1,0 +1,30 @@
+.payment-order {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: solid 1px #b4b4b4;
+    border-radius: 10px;
+    margin-bottom: 10%;
+    font-size: 17px;
+}
+
+.btn-coupon {
+    width: 100%;
+}
+
+.payment-description {
+    font-family: "kanit-extra-light";
+}
+
+.net-balance {
+    background-color: #ebebeb;
+}
+
+.net-balance-price {
+    font-size: 26px;
+    font-weight: bold;
+    color: #585858;
+}
+
+.btn-checkbill {
+    width: 280px;
+}

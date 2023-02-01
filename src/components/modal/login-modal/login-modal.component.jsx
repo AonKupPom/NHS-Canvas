@@ -25,7 +25,7 @@ const LoginModalComponent = () => {
         onHide={() => {
           setLoginModalShow(false);
         }}
-        aria-labelledby="contained-modal-title-vcenter"
+        aria-labelledby="contained-modal-title-center"
         centered
       >
         <Modal.Header className="pb-0" closeButton>

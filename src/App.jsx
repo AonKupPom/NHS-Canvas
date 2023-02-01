@@ -23,9 +23,14 @@ const RentTents = React.lazy(() =>
 const Payment = React.lazy(() =>
   import("./components/pages/payment/payment.component")
 );
+const ManageUsers = React.lazy(() =>
+  import("./components/pages/manage/manage-users/manage-users.component")
+);
 
 function App() {
   const { user } = useSelector((state) => state.auth);
+  const ADMIN = "610064006d0069006e00"; //admin UTF-16
+  // const USER = "7500730065007200"; // user UTF-16
   return (
     <div className="root">
       <NavbarComponent />
@@ -75,17 +80,18 @@ function App() {
             </React.Suspense>
           }
         />
-        {!user ? null : (
+        {user?.role === ADMIN ? (
           <Route
             path="/manage-users"
             element={
               <React.Suspense fallback="Loading...">
                 {" "}
-                <RentTents />{" "}
+                <ManageUsers />{" "}
               </React.Suspense>
             }
           />
-        )}
+        ) : null}
+
         <Route
           path="*"
           element={

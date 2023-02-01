@@ -38,7 +38,7 @@ const PaymentTableComponent = () => {
                       alt=""
                     ></img>
                   </Col>
-                  <Col className="payment-product-detail">{item.name}</Col>
+                  <Col className="payment-product-detail">{item.product?.name}</Col>
                 </Row>
               </td>
               <td className="text-center p-0 payment-product-detail">

@@ -1,0 +1,25 @@
+tr {
+    height: 50px
+}
+
+.responsive-table {
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 20px !important;
+    margin: 0 0 0 10px !important;
+    padding: 6px 5px 6px 10px !important;
+    outline: none !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border-radius: 7px !important;
+    margin: 0 10px 0 10px !important;
+    outline: none !important;
+}
+
+.datatable-btn {
+    min-width: 60px;
+}

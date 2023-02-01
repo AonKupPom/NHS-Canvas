@@ -15,11 +15,15 @@ const LoginFormComponent = () => {
   const { setLoginModalShow } = useContext(loginModalContext);
   const [userName, setUserName] = useState(null);
   const [password, setPassword] = useState(null);
+  const [loginValidate, setLoginValidate] = useState(null);
 
   const dispatch = useDispatch();
 
   const loginSubmit = async () => {
-    const user = await login({ userName, password });
+    const user = await login({ userName, password }).catch(err => {
+      console.log(err);
+      setLoginValidate(err?.response?.data?.message);
+    })
     if (user) {
       dispatch(setAuth(user));
       setLoginModalShow(false);
@@ -60,6 +64,7 @@ const LoginFormComponent = () => {
           </Col>
         </Row>
         <Row>
+          <Col className="d-flex justify-content-start text-danger">{loginValidate}</Col>
           <Col className="d-flex justify-content-end">
             <Link to="/" className="login-modal-link">
               ลืมรหัสผ่าน?

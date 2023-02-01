@@ -23,7 +23,7 @@ const CartModalComponent = ({ cart, cartModalShow, setCartModalShow }) => {
         id="cart-modal"
         show={cartModalShow}
         onHide={() => setCartModalShow(false)}
-        aria-labelledby="contained-modal-title-vcenter"
+        aria-labelledby="contained-modal-title-center"
         scrollable={true}
         centered
       >
@@ -81,7 +81,7 @@ const CartModalComponent = ({ cart, cartModalShow, setCartModalShow }) => {
                                 alt=""
                               ></img>
                             </Col>
-                            <Col>{item.name}</Col>
+                            <Col>{item.product?.name}</Col>
                           </Row>
                         </td>
                         <td className="text-center p-0">{item.price}</td>

@@ -8,7 +8,7 @@ const PaymentComponent = () => {
   const cart = useSelector((state) => state.cart);
   return (
     <>
-      <Container>
+      <Container className="px-4">
         {cart.length === 0 ? (
           <EmptyPaymentShoppingComponent />
         ) : (

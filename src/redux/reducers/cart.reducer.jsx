@@ -2,7 +2,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART, REMOVE_ALL_PRODUCT, REDUCE_FROM_CART } f
 import jwt_encode from "jwt-encode"
 import jwt_decode from "jwt-decode"
 
-const initialState = localStorage.getItem("cart") ? jwt_decode(localStorage.getItem("cart")) : []
+const initialState = localStorage.getItem("Y2FydA==_") ? jwt_decode(localStorage.getItem("Y2FydA==_")) : []
 
 export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -19,7 +19,7 @@ export const cartReducer = (state = initialState, action) => {
                     quantity: item._id === foundItem._id ? item.quantity + 1 : item.quantity
                 }))
             }
-            localStorage.setItem("cart", jwt_encode(updateCart, process.env.REACT_APP_CART_SECRET))
+            localStorage.setItem("Y2FydA==_", jwt_encode(updateCart, process.env.REACT_APP_CART_SECRET))
             return updateCart
 
             case REDUCE_FROM_CART:
@@ -35,15 +35,15 @@ export const cartReducer = (state = initialState, action) => {
                         quantity: item._id === foundItem2._id ? item.quantity - 1 : item.quantity
                     }))
                 }
-                localStorage.setItem("cart", jwt_encode(updateCart2, process.env.REACT_APP_CART_SECRET))
+                localStorage.setItem("Y2FydA==_", jwt_encode(updateCart2, process.env.REACT_APP_CART_SECRET))
                 return updateCart2
 
         case REMOVE_FROM_CART:
-            localStorage.setItem("cart", jwt_encode(state.filter(item => item._id !== action.payload), process.env.REACT_APP_CART_SECRET))
+            localStorage.setItem("Y2FydA==_", jwt_encode(state.filter(item => item._id !== action.payload), process.env.REACT_APP_CART_SECRET))
             return state.filter(item => item._id !== action.payload)
 
         case REMOVE_ALL_PRODUCT:
-            localStorage.removeItem("cart")
+            localStorage.removeItem("Y2FydA==_")
             return action.payload
 
         default:
