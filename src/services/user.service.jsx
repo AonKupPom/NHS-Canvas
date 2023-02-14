@@ -20,11 +20,11 @@ export const deleteUser = async (id) => {
     return axios.delete(`${process.env.REACT_APP_API_PATH}/api/user/delete/${id}`).then(response => response.data)
 }
 
-export const getAllForDatatable = async (options) => {
+export const getUserForDatatable = async (options) => {
     const formData = {
         start: options.start,
         tableRange: options.length,
         search: options.search.value
     }
-    return axios.post(`${process.env.REACT_APP_API_PATH}/api/user/getAllForDatatable`, formData).then(response => response.data)
+    return axios.post(`${process.env.REACT_APP_API_PATH}/api/user/getUserForDatatable`, formData).then(response => response.data)
 }

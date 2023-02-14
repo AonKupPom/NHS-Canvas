@@ -1,0 +1,30 @@
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#create-product-modal-body {
+    height: 40%;
+}
+
+.upload-button {
+    padding: 7px;
+    border: 1px #ced4da solid;
+    border-radius: 0.375rem;
+    color: #212529;
+    cursor: pointer;
+}
+
+.file-name-before {
+    font-size: calc(80% + 0.5vmin);
+    color: #7d858c;
+}
+
+.file-name-after {
+    font-size: calc(80% + 0.5vmin);
+    color: #212529;
+}
+
+.sss {
+    white-space: pre;
+}

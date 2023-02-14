@@ -27,6 +27,10 @@ const ManageUsers = React.lazy(() =>
   import("./components/pages/manage/manage-users/manage-users.component")
 );
 
+const ManageProducts = React.lazy(() =>
+  import("./components/pages/manage/manage-products/manage-products.component")
+);
+
 function App() {
   const { user } = useSelector((state) => state.auth);
   const ADMIN = "610064006d0069006e00"; //admin UTF-16
@@ -81,15 +85,27 @@ function App() {
           }
         />
         {user?.role === ADMIN ? (
-          <Route
-            path="/manage-users"
-            element={
-              <React.Suspense fallback="Loading...">
-                {" "}
-                <ManageUsers />{" "}
-              </React.Suspense>
-            }
-          />
+          <>
+            <Route
+              path="/manage-users"
+              element={
+                <React.Suspense fallback="Loading...">
+                  {" "}
+                  <ManageUsers />{" "}
+                </React.Suspense>
+              }
+            />
+
+            <Route
+              path="/manage-products"
+              element={
+                <React.Suspense fallback="Loading...">
+                  {" "}
+                  <ManageProducts />{" "}
+                </React.Suspense>
+              }
+            />
+          </>
         ) : null}
 
         <Route
@@ -102,6 +118,7 @@ function App() {
           }
         />
       </Routes>
+      <div className="footer-margin"></div>
       <FooterComponent />
     </div>
   );

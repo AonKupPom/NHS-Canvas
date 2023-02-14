@@ -206,7 +206,7 @@ const ProductList = () => {
                 </div>
                 <Slider {...settings} className='mb-5'>
                     <Col className='d-flex justify-content-center my-3'>
-                        <div className="card">
+                        <div className="card product-list">
                             <div className="imgBx">
                                 <img src={require('../../../../assets/img/48.png')} alt='' />
                             </div>
@@ -234,7 +234,7 @@ const ProductList = () => {
                         </div>
                     </Col>
                     <Col className='d-flex justify-content-center my-3'>
-                        <div className="card">
+                        <div className="card product-list">
                             <div className="imgBx">
                                 <img src={require('../../../../assets/img/front-gabletent.png')} alt='' />
                             </div>
@@ -262,7 +262,7 @@ const ProductList = () => {
                         </div>
                     </Col>
                     <Col className='d-flex justify-content-center my-3'>
-                        <div className="card">
+                        <div className="card product-list">
                             <div className="imgBx">
                                 <img src={require('../../../../assets/img/side-gable.png')} alt='' />
                             </div>
@@ -290,7 +290,7 @@ const ProductList = () => {
                         </div>
                     </Col>
                     <Col className='d-flex justify-content-center my-3'>
-                        <div className="card">
+                        <div className="card product-list">
                             <div className="imgBx">
                                 <img src={require('../../../../assets/img/48.png')} alt='' />
                             </div>
@@ -318,7 +318,7 @@ const ProductList = () => {
                         </div>
                     </Col>
                     <Col className='d-flex justify-content-center my-3'>
-                        <div className="card">
+                        <div className="card product-list">
                             <div className="imgBx">
                                 <img src={require('../../../../assets/img/48.png')} alt='' />
                             </div>
@@ -346,7 +346,7 @@ const ProductList = () => {
                         </div>
                     </Col>
                     <Col className='d-flex justify-content-center my-3'>
-                        <div className="card">
+                        <div className="card product-list">
                             <div className="imgBx">
                                 <img src={require('../../../../assets/img/48.png')} alt='' />
                             </div>

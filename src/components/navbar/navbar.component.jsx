@@ -13,7 +13,7 @@ import * as faSol from "@fortawesome/free-solid-svg-icons";
 import * as faReg from "@fortawesome/free-regular-svg-icons";
 import * as bi from "react-bootstrap-icons";
 import { NavLink, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoginModalComponent from "./../modal/login-modal/login-modal.component";
 import loginModalContext from "./../modal/login-modal/login-modal-context/loginModal.context";
@@ -23,18 +23,37 @@ import { removeAllProduct } from "../../redux/actions/cart.action";
 import jwt_decode from "jwt-decode";
 import { getUserById } from "../../services/user.service";
 import { gapi } from "gapi-script";
+import Card from "react-bootstrap/Card";
 
 const NavbarComponent = () => {
   const [loginModalShow, setLoginModalShow] = useState(false);
   const [cartModalShow, setCartModalShow] = useState(false);
   const [loginButtonTab, setLoginButtonTab] = useState("login-button-tab");
   const [loginFormTab, setLoginFormTab] = useState("login-form-tab");
+  const [profileDropdownShow, setProfileDropdownShow] = useState(false);
+  const [profileDropdownClass, setProfileDropdownClass] =
+    useState("hidden-card");
 
   const cart = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const ADMIN = "610064006d0069006e00";
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+  }, []);
+
+  const refOne = useRef(null);
+
+  const handleClickOutside = (e) => {
+    if (refOne?.current?.contains(e.target)) {
+      setProfileDropdownClass("show-card");
+      setProfileDropdownShow(true);
+    } else {
+      setProfileDropdownClass("hidden-card");
+    }
+  };
 
   useEffect(() => {
     const userID = localStorage.getItem("Y3VycmVudFVzZXI=")
@@ -63,6 +82,7 @@ const NavbarComponent = () => {
       auth2.signOut().then(auth2.disconnect().then());
     }
     // navigate("/");
+    setProfileDropdownClass("hidden-card");
   };
 
   const startLoginModal = () => {
@@ -101,6 +121,9 @@ const NavbarComponent = () => {
                   <Button
                     variant="outline-secondary"
                     className="mr-4 btn-search"
+                    onClick={(e) => {
+                      e.currentTarget.blur();
+                    }}
                   >
                     <FontAwesomeIcon
                       icon={faSol.faMagnifyingGlass}
@@ -119,28 +142,108 @@ const NavbarComponent = () => {
                     }}
                   >
                     <FontAwesomeIcon
-                      icon={faReg.faUser}
+                      icon={faSol.faUnlock}
                       size="xl"
                     ></FontAwesomeIcon>
                     &emsp;เข้าสู่ระบบ
                   </Button>
                 </div>
               ) : (
-                <div className="mb-2 mx-1">
-                  <Button
-                    variant="outline-secondary"
-                    className="btn-user mr-4"
-                    onClick={(e) => {
-                      e.currentTarget.blur();
-                      logout();
-                    }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faSol.faArrowRightFromBracket}
-                      size="xl"
-                    ></FontAwesomeIcon>
-                    &emsp;ออกจากระบบ
-                  </Button>
+                <div className="mb-2 mx-1 btn-profile" ref={refOne}>
+                  <Row>
+                    <Col className="p-0 mx-3">
+                      <Button
+                        variant="outline-secondary"
+                        className="btn-user mr-4"
+                        onClick={(e) => {
+                          e.currentTarget.blur();
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon={faReg.faUser}
+                          size="xl"
+                        ></FontAwesomeIcon>
+                        &emsp;
+                        {`${user.firstName} ${user.lastName
+                          ?.toString()
+                          .substring(0, 1)}.`}
+                      </Button>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      {profileDropdownShow ? (
+                        <Card className={`p-0 ${profileDropdownClass}`}>
+                          <Card.Body className="p-0">
+                            <Row
+                              className="align-items-center px-1 py-2 mt-3 profile-dropdown-menu"
+                              onClick={() => {
+                                setProfileDropdownClass("hidden-card");
+                              }}
+                            >
+                              <Col
+                                className="d-flex justify-content-start"
+                                xs="2"
+                              >
+                                <div className="d-flex justify-content-start">
+                                  <bi.Person size={28} />
+                                </div>
+                              </Col>
+                              <Col>บัญชีของฉัน</Col>
+                            </Row>
+                            <Row
+                              className="align-items-center px-1 py-2 profile-dropdown-menu"
+                              onClick={() => {
+                                setProfileDropdownClass("hidden-card");
+                              }}
+                            >
+                              <Col
+                                className="d-flex justify-content-start"
+                                xs="2"
+                              >
+                                <div className="d-flex justify-content-start">
+                                  <bi.FileText size={25} />
+                                </div>
+                              </Col>
+                              <Col>รายการคำสั่งซื้อ</Col>
+                            </Row>
+                            <Row
+                              className="align-items-center px-1 py-2 profile-dropdown-menu"
+                              onClick={() => {
+                                setProfileDropdownClass("hidden-card");
+                              }}
+                            >
+                              <Col
+                                className="d-flex justify-content-start"
+                                xs="2"
+                              >
+                                <div className="d-flex justify-content-start">
+                                  <bi.TicketPerforated size={25} />
+                                </div>
+                              </Col>
+                              <Col>คูปองของฉัน</Col>
+                            </Row>
+                            <Row
+                              className="align-items-center px-1 py-2 mb-3 profile-dropdown-menu"
+                              onClick={() => {
+                                logout();
+                              }}
+                            >
+                              <Col
+                                className="d-flex justify-content-start"
+                                xs="2"
+                              >
+                                <div className="d-flex justify-content-start">
+                                  <bi.BoxArrowLeft size={25} />
+                                </div>
+                              </Col>
+                              <Col>ออกจากระบบ</Col>
+                            </Row>
+                          </Card.Body>
+                        </Card>
+                      ) : null}
+                    </Col>
+                  </Row>
                 </div>
               )}
 
@@ -270,7 +373,9 @@ const NavbarComponent = () => {
                           <NavDropdown.Item as={Link} to={"/manage-users"}>
                             ผู้ใช้งาน
                           </NavDropdown.Item>
-                          <NavDropdown.Item>ผ้าใบเฉพาะงาน</NavDropdown.Item>
+                          <NavDropdown.Item as={Link} to={"/manage-products"}>
+                            สินค้าทั้งหมด
+                          </NavDropdown.Item>
                           <NavDropdown.Divider />
                           <NavDropdown.Item>
                             ชนิดวัสดุผลิตสินค้า

@@ -45,9 +45,10 @@ const RentTentsList = () => {
       productRentService
         .getLazyProductRent(tents.length)
         .then((res) => {
-          setTents(tents.concat(res));
+          res ? setTents(tents.concat(res)) : setHasMore(false);
         })
         .catch((err) => {
+          console.log(err);
           setHasMore(false);
         });
     }, 500);
@@ -55,13 +56,14 @@ const RentTentsList = () => {
 
   return (
     <>
-      <div className="filter-title">รายการเต็นท์เช่า</div>
+      <div className="page-title">รายการเต็นท์เช่า</div>
       <InfiniteScroll
         dataLength={tents.length}
         next={fetchMoreData}
         hasMore={hasMore}
+        scrollThreshold={0.7}
       >
-        <Row className="my-5 pb-5">
+        <Row className="mt-5">
           {tents.map((items, index) => {
             return (
               <Col
@@ -69,7 +71,7 @@ const RentTentsList = () => {
                 md="6"
                 lg="6"
                 xl="4"
-                className="d-flex justify-content-center my-2 aon"
+                className="d-flex justify-content-center my-2 fadeIn"
                 key={index}
               >
                 <Col className="rent-tents-list p-3 text-center">

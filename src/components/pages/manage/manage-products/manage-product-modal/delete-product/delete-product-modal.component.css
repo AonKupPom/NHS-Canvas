@@ -1,0 +1,19 @@
+.delete-modal-body {
+    overflow: hidden !important;
+}
+
+.delete-modal-title {
+    font-size: calc(60% + 1.4vmin);
+    font-weight: bold;
+    color: #575757;
+}
+
+.delete-modal-content {
+    font-size: calc(60% + 0.8vmin);
+    color: #666666;
+}
+
+.delete-modal-button {
+    width: 80px;
+    height: 45px;
+}

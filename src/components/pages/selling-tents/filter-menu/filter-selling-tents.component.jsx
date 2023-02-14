@@ -4,7 +4,7 @@ import './filter-selling-tents.component.css';
 const FilterSellingTents = () => {
     return (
         <>
-            <div className='filter-title'>ตั้งค่าการค้นหา</div>
+            <div className='page-title'>ตั้งค่าการค้นหา</div>
             <div className='border-bottom mt-4'></div>
 
             <div className='my-3'>

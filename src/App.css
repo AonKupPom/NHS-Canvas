@@ -17,7 +17,25 @@
     font-family: 'kanit';
 }
 
-.btn:focus, .btn:active {
+.btn:focus,
+.btn:active {
     outline: none !important;
     box-shadow: none !important;
+}
+
+.swal2-title,
+.swal2-html-container,
+.swal2-confirm,
+.swal2-cancel {
+    font-family: 'kanit' !important;
+    box-shadow: none !important;
+}
+
+.swal2-title {
+    font-size: 26px !important;
+}
+
+.footer-margin {
+    margin-top: 5%;
+    margin-bottom: 5%;
 }

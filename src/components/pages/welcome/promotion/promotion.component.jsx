@@ -60,7 +60,7 @@ const Promotion = () => {
                         </div>
                     </Col>
                 </Row>
-                <Row className='my-5 pb-5'>
+                <Row className='my-5'>
                     <Col md='3' className='d-flex justify-content-center my-1'>
                         <div className='promotion-heap'>
                             <img src={require('../../../../assets/img/28591bf3d6674cfdbbe48e99247e0aad.png')} className='promotion-heap-img' draggable='false' alt=''></img>

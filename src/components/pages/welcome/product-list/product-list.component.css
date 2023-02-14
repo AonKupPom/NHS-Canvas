@@ -3,7 +3,7 @@
     outline: none;
 }
 
-.container .card {
+.container .product-list {
     position: relative;
     width: 75%;
     height: 0;
@@ -16,7 +16,7 @@
     border: none;
 }
 
-.container .card:before {
+.container .product-list:before {
     content: '';
     position: absolute;
     top: 0;
@@ -29,11 +29,11 @@
     transition: 0.5s ease-in-out;
 }
 
-.container .card:hover:before {
+.container .product-list:hover:before {
     clip-path: circle(75% at 80% -20%);
 }
 
-.container .card:after {
+.container .product-list:after {
     content: 'N H S';
     position: absolute;
     top: 30%;
@@ -45,7 +45,7 @@
     color: rgba(255, 255, 255, 0.05)
 }
 
-.container .card .imgBx {
+.container .product-list .imgBx {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -55,13 +55,13 @@
     transition: 0.5s;
 }
 
-.container .card:hover .imgBx {
+.container .product-list:hover .imgBx {
     top: 0%;
     transform: translateY(0%);
 
 }
 
-.container .card .imgBx img {
+.container .product-list .imgBx img {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -69,7 +69,7 @@
     width: 70%;
 }
 
-.container .card .contentBx {
+.container .product-list .contentBx {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -79,11 +79,11 @@
     z-index: 10;
 }
 
-.container .card:hover .contentBx {
+.container .product-list:hover .contentBx {
     height: 57%;
 }
 
-.container .card .contentBx h2 {
+.container .product-list .contentBx h2 {
     position: relative;
     font-weight: 600;
     letter-spacing: 1px;
@@ -91,9 +91,9 @@
     margin: 0;
 }
 
-.container .card .contentBx .size,
-.container .card .contentBx .color,
-.container .card .contentBx .price {
+.container .product-list .contentBx .size,
+.container .product-list .contentBx .color,
+.container .product-list .contentBx .price {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,27 +106,27 @@
     vertical-align: middle
 }
 
-.container .card:hover .contentBx .size {
+.container .product-list:hover .contentBx .size {
     opacity: 1;
     visibility: visible;
     transition-delay: 0.5s;
 }
 
-.container .card:hover .contentBx .color {
+.container .product-list:hover .contentBx .color {
     opacity: 1;
     visibility: visible;
     transition-delay: 0.6s;
 }
 
-.container .card:hover .contentBx .price {
+.container .product-list:hover .contentBx .price {
     opacity: 1;
     visibility: visible;
     transition-delay: 0.7s;
 }
 
-.container .card .contentBx .size h3,
-.container .card .contentBx .color h3,
-.container .card .contentBx .price h3 {
+.container .product-list .contentBx .size h3,
+.container .product-list .contentBx .color h3,
+.container .product-list .contentBx .price h3 {
     color: #fff;
     font-weight: 300;
     font-size: 14px;
@@ -136,7 +136,7 @@
     /* margin-top: 10px; */
 }
 
-.container .card .contentBx .size span {
+.container .product-list .contentBx .size span {
     width: 40px;
     height: 26px;
     text-align: center;
@@ -152,11 +152,11 @@
     cursor: pointer;
 }
 
-.container .card .contentBx .size span:hover {
+.container .product-list .contentBx .size span:hover {
     background: #9c9c9c;
 }
 
-.container .card .contentBx .color span {
+.container .product-list .contentBx .color span {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -164,24 +164,24 @@
     cursor: pointer;
 }
 
-.container .card .contentBx .color span:nth-child(2) {
+.container .product-list .contentBx .color span:nth-child(2) {
     background: #e7e7e7;
 }
 
-.container .card .contentBx .color span:nth-child(3) {
+.container .product-list .contentBx .color span:nth-child(3) {
     background: #0b38b3;
 }
 
-.container .card .contentBx .color span:nth-child(4) {
+.container .product-list .contentBx .color span:nth-child(4) {
     background: #058b00;
 }
 
-.container .card .contentBx .price span {
+.container .product-list .contentBx .price span {
     color: #FFFFFF;
     font-size: 20px;
 }
 
-.container .card .contentBx a {
+.container .product-list .contentBx a {
     display: inline-block;
     padding: 10px 20px;
     background: #fff;
@@ -196,7 +196,7 @@
     margin-top: 0;
 }
 
-.container .card:hover .contentBx a {
+.container .product-list:hover .contentBx a {
     opacity: 1;
     transform: translateY(0px);
     transition-delay: 0.75s;
@@ -322,33 +322,33 @@
 
 
 @media (max-width: 470px) {
-    .container .card .contentBx h2 {
+    .container .product-list .contentBx h2 {
         font-size: 5.2vw;
     }
 
-    .container .card .contentBx .size h3 {
+    .container .product-list .contentBx .size h3 {
         font-size: 3vw;
     }
 
-    .container .card .contentBx .size span {
+    .container .product-list .contentBx .size span {
         width: 13%;
         height: 5%;
         font-size: 2vw;
     }
 
-    .container .card .contentBx .color h3 {
+    .container .product-list .contentBx .color h3 {
         font-size: 3vw;
     }
 
-    .container .card .contentBx .price h3 {
+    .container .product-list .contentBx .price h3 {
         font-size: 3vw;
     }
 
-    .container .card .contentBx .price span {
+    .container .product-list .contentBx .price span {
         font-size: 4vw;
     }
 
-    .container .card .contentBx a {
+    .container .product-list .contentBx a {
         padding: 5px 10px;
         font-size: 4vw;
     }

@@ -18,6 +18,17 @@
     }
 }
 
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 @keyframes dropdown-menu {
     0% {
         opacity: 0.5;
@@ -169,4 +180,44 @@ a:hover {
 
 .active {
     color: #000000;
+}
+
+.btn-profile {
+    position: relative;
+}
+
+.btn-profile .show-card {
+    position: absolute;
+    top: 50px;
+    left: 5px;
+    width: 220px;
+    border-radius: 5%;
+    color: #666666;
+    animation: fadeIn 0.3s;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.btn-profile .hidden-card {
+    position: absolute;
+    top: 50px;
+    left: 5px;
+    width: 220px;
+    border-radius: 5%;
+    color: #666666;
+    animation: fadeOut 0.3s forwards;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.profile-dropdown-menu {
+    width: 220px;
+    margin-left: 0;
+}
+
+.profile-dropdown-menu:hover {
+    cursor: pointer;
+    background: #666666;
+    color: #FFFFFF;
+    transition: background-color 300ms, color 300ms;
 }

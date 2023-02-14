@@ -57,8 +57,8 @@ const LoginButtonComponent = () => {
     <>
       <div className="d-flex justify-content-center mb-4">
         <h4>
-          <FontAwesomeIcon icon={faSol.faLock} size="lg" className="mr-3" />
-          &nbsp;เข้าสู่ระบบ
+          <FontAwesomeIcon icon={faSol.faUnlock} size="lg" className="mr-3" />
+          &nbsp;&nbsp;เข้าสู่ระบบ
         </h4>
       </div>
       <div className="text-center">
@@ -72,7 +72,7 @@ const LoginButtonComponent = () => {
         >
           <Row className="align-items-center">
             <Col xs="5">
-              <bi.KeyFill size={30} className="mr-3" />
+              <bi.KeyFill size={40} className="mr-3" />
             </Col>
             <Col xs="7" className="d-flex justify-content-start">
               เข้าสู่ระบบ

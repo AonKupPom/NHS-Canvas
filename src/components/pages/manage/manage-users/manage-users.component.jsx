@@ -13,7 +13,7 @@ const ManageUsersComponent = () => {
     new DataTables(tableRef.current, {
       serverSide: true,
       ajax: (options, callback, settings) => {
-        userService.getAllForDatatable(options).then((res) => {
+        userService.getUserForDatatable(options).then((res) => {
           const users = res.data.map((items) => ({
             ...items,
             image: require("./../../../../assets/img/48.png"),
@@ -46,9 +46,7 @@ const ManageUsersComponent = () => {
           data: "_id",
           className: "text-center",
           render: (data) => {
-            $("#" + data).on("click", (res) => {
-              console.log(res);
-            });
+            $("#" + data).on("click", (res) => {});
             return (
               '<button id="' +
               data +
@@ -83,6 +81,7 @@ const ManageUsersComponent = () => {
   return (
     <>
       <Container>
+        <div className="page-title mb-5">รายละเอียดผู้ใช้งาน</div>
         <table
           ref={tableRef}
           className="table table-striped table-borderless responsive-table"

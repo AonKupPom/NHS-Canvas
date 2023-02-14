@@ -12,8 +12,8 @@ const SellingTentsList = () => {
     let id2 = '2222222'
     return (
         <>
-            <div className='filter-title'>รายการเต็นท์ผ้าใบ</div>
-            <Row className='my-5 pb-5'>
+            <div className='page-title'>รายการเต็นท์ผ้าใบ</div>
+            <Row className='mt-5'>
                 <Col sm='6' md='6' lg='6' xl='4' className='d-flex justify-content-center my-2' >
                     <Col className='selling-tents-list p-3 text-center'>
                         <Link to={{ pathname: `/selling-tents-product/${id1}` }}>
