@@ -21,7 +21,6 @@ const LoginFormComponent = () => {
 
   const loginSubmit = async () => {
     const user = await login({ userName, password }).catch(err => {
-      console.log(err);
       setLoginValidate(err?.response?.data?.message);
     })
     if (user) {

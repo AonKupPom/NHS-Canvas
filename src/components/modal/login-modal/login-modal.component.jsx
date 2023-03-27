@@ -29,7 +29,7 @@ const LoginModalComponent = () => {
         centered
       >
         <Modal.Header className="pb-0" closeButton>
-          {loginButtonTab === "login-button-pass" ? (
+          {loginButtonTab === "login-button-pass" && (
             <FontAwesomeIcon
               icon={faSol.faChevronLeft}
               className="modal-back-button"
@@ -39,7 +39,7 @@ const LoginModalComponent = () => {
                 setLoginFormTab("login-form-back");
               }}
             ></FontAwesomeIcon>
-          ) : null}
+          )}
         </Modal.Header>
         <Modal.Body>
           <div className={loginButtonTab}>

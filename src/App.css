@@ -17,6 +17,9 @@
     font-family: 'kanit';
 }
 
+/* input:focus,
+select:focus,
+textarea:focus, */
 .btn:focus,
 .btn:active {
     outline: none !important;

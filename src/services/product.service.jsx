@@ -57,3 +57,9 @@ export const getProductForDatatable = async (options) => {
     )
     .then((response) => response.data);
 };
+
+export const getWithProductAttribute = async (id) => {
+  return axios
+  .get(`${process.env.REACT_APP_API_PATH}/api/product/getWithProductAttribute/${id}`)
+  .then((response) => response.data);
+}

@@ -22,7 +22,6 @@ import { Logout, setCurrentUser } from "../../redux/actions/auth.action";
 import { removeAllProduct } from "../../redux/actions/cart.action";
 import jwt_decode from "jwt-decode";
 import { getUserById } from "../../services/user.service";
-import { gapi } from "gapi-script";
 import Card from "react-bootstrap/Card";
 
 const NavbarComponent = () => {
@@ -37,7 +36,6 @@ const NavbarComponent = () => {
   const cart = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const ADMIN = "610064006d0069006e00";
 
   useEffect(() => {
@@ -64,24 +62,9 @@ const NavbarComponent = () => {
     });
   }, [dispatch]);
 
-  useEffect(() => {
-    const initClient = () => {
-      gapi.client.init({
-        clientId: clientId,
-        scope: "",
-      });
-    };
-    gapi.load("client:auth2", initClient);
-  }, [clientId]);
-
   const logout = () => {
     dispatch(Logout());
     dispatch(removeAllProduct());
-    var auth2 = gapi.auth2.getAuthInstance();
-    if (auth2 != null) {
-      auth2.signOut().then(auth2.disconnect().then());
-    }
-    // navigate("/");
     setProfileDropdownClass("hidden-card");
   };
 
@@ -172,7 +155,7 @@ const NavbarComponent = () => {
                   </Row>
                   <Row>
                     <Col>
-                      {profileDropdownShow ? (
+                      {profileDropdownShow && (
                         <Card className={`p-0 ${profileDropdownClass}`}>
                           <Card.Body className="p-0">
                             <Row
@@ -241,7 +224,7 @@ const NavbarComponent = () => {
                             </Row>
                           </Card.Body>
                         </Card>
-                      ) : null}
+                      )}
                     </Col>
                   </Row>
                 </div>
@@ -359,7 +342,7 @@ const NavbarComponent = () => {
                     <Row className="justify-content-center mt-2">โปรโมชัน</Row>
                   </NavLink>
                 </div>
-                {user?.role === ADMIN ? (
+                {user?.role === ADMIN && (
                   <div className="px-5 nav-items">
                     <div className="icon-hov">
                       <Row className="justify-content-center mt-2">
@@ -384,7 +367,7 @@ const NavbarComponent = () => {
                       </Row>
                     </div>
                   </div>
-                ) : null}
+                )}
               </Nav>
             </Navbar.Collapse>
           </Navbar>

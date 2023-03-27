@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import CreateProductModalComponent from "./manage-product-modal/create-product/create-product-modal.component";
 import EditProductModalComponent from "./manage-product-modal/edit-product/edit-product-modal.component";
 import DeleteProductModalComponent from "./manage-product-modal/delete-product/delete-product-modal.component";
+import * as productTypeService from "./../../../../services/product-type.service";
 
 const ManageUsersComponent = () => {
   const tableRef = useRef();
@@ -19,8 +20,10 @@ const ManageUsersComponent = () => {
   const [deleteProductModalShow, setDeleteProductModalShow] = useState(false);
   const [productId, setProductId] = useState(null);
   const [table, setTable] = useState(null);
+  const [productTypes, setProductTypes] = useState(null);
 
   useEffect(() => {
+    getAllProductTypes();
     const table = new DataTables(tableRef.current, {
       serverSide: true,
       ajax: (options, callback, settings) => {
@@ -48,8 +51,11 @@ const ManageUsersComponent = () => {
         },
         { title: "ชื่อ", data: "name", className: "text-center" },
         { title: "ประเภท", data: "type.name", className: "text-center" },
-        { title: "สต๊อก", data: "stock", className: "text-center" },
-        { title: "รายละเอียด", data: "description", className: "text-center multi-line" },
+        {
+          title: "รายละเอียด",
+          data: "description",
+          className: "text-center multi-line",
+        },
         {
           title: "จัดการ",
           data: "_id",
@@ -96,6 +102,12 @@ const ManageUsersComponent = () => {
     setTable(table);
   }, []);
 
+  const getAllProductTypes = () => {
+    productTypeService.getAllProductTypes().then((res) => {
+      setProductTypes(res);
+    });
+  };
+
   return (
     <>
       <Container className="mb-5">
@@ -125,6 +137,7 @@ const ManageUsersComponent = () => {
       <CreateProductModalComponent
         createProductModalShow={createProductModalShow}
         setCreateProductModalShow={setCreateProductModalShow}
+        productTypes={productTypes}
         table={table}
       />
 
@@ -132,6 +145,7 @@ const ManageUsersComponent = () => {
         editProductModalShow={editProductModalShow}
         setEditProductModalShow={setEditProductModalShow}
         productId={productId}
+        productTypes={productTypes}
         table={table}
       />
 

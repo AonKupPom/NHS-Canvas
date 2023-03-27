@@ -26,6 +26,7 @@ const RentTentsList = () => {
     productRentService
       .getLazyProductRent(SKIP)
       .then((res) => {
+        console.log("res : ",res)
         setTents(res);
       })
       .catch((err) => {

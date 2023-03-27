@@ -84,7 +84,7 @@ function App() {
             </React.Suspense>
           }
         />
-        {user?.role === ADMIN ? (
+        {user?.role === ADMIN && (
           <>
             <Route
               path="/manage-users"
@@ -106,7 +106,7 @@ function App() {
               }
             />
           </>
-        ) : null}
+        )}
 
         <Route
           path="*"
