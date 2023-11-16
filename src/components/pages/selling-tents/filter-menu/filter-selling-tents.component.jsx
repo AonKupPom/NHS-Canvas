@@ -1,5 +1,5 @@
 import React from 'react';
-import './filter-selling-tents.component.css';
+import './filter-selling-tents.component.scss';
 
 const FilterSellingTents = () => {
     return (

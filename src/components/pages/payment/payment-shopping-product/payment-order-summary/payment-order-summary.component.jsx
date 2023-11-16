@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import "./payment-order-summary.component.css";
+import "./payment-order-summary.component.scss";
 import * as bi from "react-bootstrap-icons";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

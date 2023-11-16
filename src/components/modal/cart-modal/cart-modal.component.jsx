@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as faSol from "@fortawesome/free-solid-svg-icons";
 import * as faReg from "@fortawesome/free-regular-svg-icons";
-import "./cart-modal.component.css";
+import "./cart-modal.component.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";

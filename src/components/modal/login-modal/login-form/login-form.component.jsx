@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { setAuth } from "./../../../../redux/actions/auth.action";
 import loginModalContext from "./../login-modal-context/loginModal.context";
 import { login } from "./../../../../services/auth.service";
+import "./login-form.component.scss"
 
 const LoginFormComponent = () => {
   const { setLoginModalShow } = useContext(loginModalContext);

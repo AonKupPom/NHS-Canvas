@@ -3,7 +3,7 @@ import { MDBFooter, MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import * as bi from 'react-bootstrap-icons'
-import './footer.component.css'
+import './footer.component.scss'
 import { Link } from "react-router-dom";
 
 export default function FooterComponent() {

@@ -1,4 +1,4 @@
-import "./manage-products.component.css";
+import "./manage-products.component.scss";
 import { Container } from "react-bootstrap";
 import $ from "jquery";
 import DataTables from "datatables.net";
@@ -13,7 +13,7 @@ import EditProductModalComponent from "./manage-product-modal/edit-product/edit-
 import DeleteProductModalComponent from "./manage-product-modal/delete-product/delete-product-modal.component";
 import * as productTypeService from "./../../../../services/product-type.service";
 
-const ManageUsersComponent = () => {
+const ManageProductsComponent = () => {
   const tableRef = useRef();
   const [createProductModalShow, setCreateProductModalShow] = useState(false);
   const [editProductModalShow, setEditProductModalShow] = useState(false);
@@ -159,4 +159,4 @@ const ManageUsersComponent = () => {
   );
 };
 
-export default ManageUsersComponent;
+export default ManageProductsComponent;

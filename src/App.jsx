@@ -31,6 +31,12 @@ const ManageProducts = React.lazy(() =>
   import("./components/pages/manage/manage-products/manage-products.component")
 );
 
+const ManageProductRent = React.lazy(() =>
+  import(
+    "./components/pages/manage/manage-product-rent/manage-product-rent.component"
+  )
+);
+
 function App() {
   const { user } = useSelector((state) => state.auth);
   const ADMIN = "610064006d0069006e00"; //admin UTF-16
@@ -102,6 +108,16 @@ function App() {
                 <React.Suspense fallback="Loading...">
                   {" "}
                   <ManageProducts />{" "}
+                </React.Suspense>
+              }
+            />
+
+            <Route
+              path="/manage-product-rent"
+              element={
+                <React.Suspense fallback="Loading...">
+                  {" "}
+                  <ManageProductRent />{" "}
                 </React.Suspense>
               }
             />

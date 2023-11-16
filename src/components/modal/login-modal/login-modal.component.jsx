@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import LoginButtonComponent from "./login-button/login-button.component";
 import loginModalContext from "./login-modal-context/loginModal.context";
 import LoginFormComponent from "./login-form/login-form.component";
-import "./login-modal.component.css"
+import "./login-modal.component.scss"
 
 const LoginModalComponent = () => {
   const {

@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./edit-product-modal.component.css";
+import "./edit-product-modal.component.scss";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
@@ -23,6 +23,7 @@ const EditProductModalComponent = ({
   const [productType, setProductType] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productImage, setProductImage] = useState("");
+  const [productUploadFile, setProductUploadFile] = useState([]);
   const [productAttribute, setProductAttribute] = useState([
     {
       id: uuid(),
@@ -42,19 +43,19 @@ const EditProductModalComponent = ({
     },
   ]);
 
-  const dataURLtoFile = (dataurl, filename) => {
-    var arr = dataurl.split(","),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n);
+  // const dataURLtoFile = (dataurl, filename) => {
+  //   var arr = dataurl.split(","),
+  //     mime = arr[0].match(/:(.*?);/)[1],
+  //     bstr = atob(arr[1]),
+  //     n = bstr.length,
+  //     u8arr = new Uint8Array(n);
 
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
+  //   while (n--) {
+  //     u8arr[n] = bstr.charCodeAt(n);
+  //   }
 
-    return new File([u8arr], filename, { type: mime });
-  };
+  //   return new File([u8arr], filename, { type: mime });
+  // };
 
   useEffect(() => {
     if (editProductModalShow) {
@@ -65,6 +66,7 @@ const EditProductModalComponent = ({
         setProductType(res?.type);
         setProductDescription(res?.description);
         setProductImage(res?.image);
+        setProductUploadFile([]);
         setProductAttribute(
           res?.productAttribute.map((items) => {
             return {
@@ -86,6 +88,30 @@ const EditProductModalComponent = ({
           })
         );
       });
+    } else {
+      setProductName("");
+      setProductType("");
+      setProductDescription("");
+      setProductImage("");
+      setProductUploadFile([]);
+      setProductAttribute([
+        {
+          id: uuid(),
+          _id: "",
+          color: "",
+          size: {
+            width: "",
+            long: "",
+            height: "",
+          },
+          stock: "",
+          defaultImage: "",
+          image: "",
+          imageName: "กรุณาเลือกภาพสินค้า",
+          imageNameClass: "file-name-before",
+          previewImage: null,
+        },
+      ]);
     }
   }, [productId, editProductModalShow]);
 
@@ -114,10 +140,14 @@ const EditProductModalComponent = ({
           type: "application/json",
         })
       );
+      productUploadFile.map((items) => {
+        formData.append("files", items.file);
+        return null;
+      });
 
       setFormData(formData);
 
-      productService.updateProduct(productId, formData).then((res) => {
+      productService.updateProduct(productId, formData).then(() => {
         table.draw();
         setEditProductModalShow(false);
       });
@@ -173,10 +203,20 @@ const EditProductModalComponent = ({
             [file],
             `${Date.now().toString()}.${file?.name?.split(".").pop()}`
           );
-          if (!!items.defaultImage) {
+          if (
+            !!items.defaultImage &&
+            !formData.getAll("filesDelete").includes(items.defaultImage)
+          ) {
             formData.append("filesDelete", items.defaultImage);
           }
-          formData.append("files", newFile);
+          const files = {
+            id,
+            file: newFile,
+          };
+          setProductUploadFile([
+            ...productUploadFile.filter((items) => items.id !== id),
+            files,
+          ]);
           if (index === 0) {
             setProductImage(newFile.name);
           }
@@ -237,15 +277,22 @@ const EditProductModalComponent = ({
             validated={validated}
             onSubmit={editProduct}
           >
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" controlId="name">
+            <Row className="align-items-center mb-3">
+              <Col
+                xs="3"
+                sm="2"
+                className="detail-title p-0 mx-3 d-flex justify-content-start"
+              >
+                ชื่อสินค้า :
+              </Col>
+              <Col className="p-0 mx-2">
+                <Form.Group controlId="name">
                   <Form.Control
                     className="p-2"
                     type="text"
-                    placeholder="ชื่อสินค้า"
+                    placeholder="กรุณาระบุชื่อสินค้า"
                     onChange={(e) => setProductName(e.target.value)}
-                    value={productName}
+                    defaultValue={productName}
                     required
                   />
                   <Form.Control.Feedback type="invalid" className="mx-1">
@@ -254,9 +301,16 @@ const EditProductModalComponent = ({
                 </Form.Group>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" controlId="type">
+            <Row className="align-items-center mb-3">
+              <Col
+                xs="3"
+                sm="2"
+                className="detail-title p-0 mx-3 d-flex justify-content-start"
+              >
+                ประเภท :
+              </Col>
+              <Col className="p-0 mx-2">
+                <Form.Group controlId="type">
                   <Form.Control
                     className="p-2 form-select"
                     as="select"
@@ -305,6 +359,28 @@ const EditProductModalComponent = ({
                                 return productAttribute.id !== items.id;
                               })
                             );
+                            setProductUploadFile(
+                              productUploadFile.filter(
+                                (upload) => upload.id !== items.id
+                              )
+                            );
+                            if (
+                              !!items._id &&
+                              !formData
+                                .getAll("filesDelete")
+                                .includes(items.defaultImage)
+                            ) {
+                              formData.append(
+                                "filesDelete",
+                                items.defaultImage
+                              );
+                            }
+                            if (!!items._id) {
+                              formData.append(
+                                "productAttributeDelete",
+                                items._id
+                              );
+                            }
                           }}
                         />
                       </Col>
@@ -363,17 +439,20 @@ const EditProductModalComponent = ({
                       </Col>
                     </Row>
                   )}
-                  <Row>
-                    <Col>
-                      <Form.Group className="mb-3" controlId="color">
+                  <Row className="align-items-center mb-3">
+                    <Col xs="4" sm="3" className="detail-title">
+                      สีสินค้า :
+                    </Col>
+                    <Col className="p-0 mx-2">
+                      <Form.Group controlId="color">
                         <Form.Control
                           className="p-2"
                           type="text"
-                          placeholder="สี"
+                          placeholder="กรุณาระบุสีสินค้า"
                           onChange={(e) => {
                             setProductColor(e.target.value, items.id);
                           }}
-                          value={items.color}
+                          defaultValue={items.color}
                           required
                         />
                         <Form.Control.Feedback type="invalid" className="mx-1">
@@ -382,9 +461,12 @@ const EditProductModalComponent = ({
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col className="d-flex">
-                      <Form.Group className="mb-3" controlId="width">
+                  <Row className="align-items-center mb-3">
+                    <Col xs="3" className="detail-title">
+                      ขนาด :
+                    </Col>
+                    <Col className="d-flex p-0 mx-2">
+                      <Form.Group controlId="width">
                         <Form.Control
                           className="p-2"
                           type="text"
@@ -392,14 +474,14 @@ const EditProductModalComponent = ({
                           onChange={(e) => {
                             setProductSize(e.target.value, items.id, "width");
                           }}
-                          value={items.size.width}
+                          defaultValue={items.size.width}
                           required
                         />
                         <Form.Control.Feedback type="invalid" className="mx-1">
                           กรุณาระบุความกว้าง.
                         </Form.Control.Feedback>
                       </Form.Group>
-                      <Form.Group className="mb-3 mx-1" controlId="long">
+                      <Form.Group className="mx-1" controlId="long">
                         <Form.Control
                           className="p-2"
                           type="text"
@@ -407,14 +489,14 @@ const EditProductModalComponent = ({
                           onChange={(e) => {
                             setProductSize(e.target.value, items.id, "long");
                           }}
-                          value={items.size.long}
+                          defaultValue={items.size.long}
                           required
                         />
                         <Form.Control.Feedback type="invalid" className="mx-1">
                           กรุณาระบุความยาว.
                         </Form.Control.Feedback>
                       </Form.Group>
-                      <Form.Group className="mb-3" controlId="height">
+                      <Form.Group controlId="height">
                         <Form.Control
                           className="p-2"
                           type="text"
@@ -422,7 +504,7 @@ const EditProductModalComponent = ({
                           onChange={(e) => {
                             setProductSize(e.target.value, items.id, "height");
                           }}
-                          value={items.size.height}
+                          defaultValue={items.size.height}
                           required
                         />
                         <Form.Control.Feedback type="invalid" className="mx-1">
@@ -431,17 +513,20 @@ const EditProductModalComponent = ({
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col>
+                  <Row className="align-items-center">
+                    <Col xs="4" sm="3" className="detail-title">
+                      จำนวน :
+                    </Col>
+                    <Col className="p-0 mx-2">
                       <Form.Group controlId="stock">
                         <Form.Control
                           className="p-2"
                           type="text"
-                          placeholder="จำนวนสินค้า"
+                          placeholder="กรุณาระบุจำนวนสินค้า"
                           onChange={(e) =>
                             setProductStock(e.target.value, items.id)
                           }
-                          value={items.stock}
+                          defaultValue={items.stock}
                           required
                         />
                         <Form.Control.Feedback type="invalid" className="mx-1">
@@ -457,7 +542,7 @@ const EditProductModalComponent = ({
               <Col>
                 <Button
                   variant="primary"
-                  className="submit-login-button mb-3"
+                  className="new-product-attribute mb-3"
                   onClick={() => {
                     addNewProductAttribute();
                   }}
@@ -473,9 +558,9 @@ const EditProductModalComponent = ({
                     className="p-2"
                     as="textarea"
                     rows={5}
-                    placeholder="รายละเอียด"
+                    placeholder="กรุณาระบุรายละเอียด"
                     onChange={(e) => setProductDescription(e.target.value)}
-                    value={productDescription}
+                    defaultValue={productDescription}
                     required
                   />
                 </Form.Group>
@@ -485,7 +570,7 @@ const EditProductModalComponent = ({
               <Col className="d-flex justify-content-end">
                 <Button
                   variant="primary"
-                  className="submit-login-button"
+                  className="submit-button"
                   type="submit"
                 >
                   แก้ไขสินค้า

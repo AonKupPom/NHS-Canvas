@@ -1,7 +1,7 @@
 import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-import './slide-show.component.css'
+import './slide-show.component.scss'
 
 const images = [
     require(`../../../../assets/img/image-slide-1.jpg`),

@@ -1,4 +1,4 @@
-import "./manage-users.component.css";
+import "./manage-users.component.scss";
 import { Container } from "react-bootstrap";
 import $ from "jquery";
 import DataTables from "datatables.net";

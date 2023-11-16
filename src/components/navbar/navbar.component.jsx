@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./navbar.component.css";
+import "./navbar.component.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as faSol from "@fortawesome/free-solid-svg-icons";
@@ -353,15 +353,70 @@ const NavbarComponent = () => {
                           title="จัดการระบบ"
                           id="navbarScrollingDropdown"
                         >
-                          <NavDropdown.Item as={Link} to={"/manage-users"}>
-                            ผู้ใช้งาน
-                          </NavDropdown.Item>
                           <NavDropdown.Item as={Link} to={"/manage-products"}>
-                            สินค้าทั้งหมด
+                            <Row className="align-items-center px-2 manage-dropdown">
+                              <Col
+                                className="d-flex justify-content-start p-0"
+                                xs="2"
+                              >
+                                <bi.Basket size={23} />
+                              </Col>
+                              <Col>สินค้าทั้งหมด</Col>
+                            </Row>
+                          </NavDropdown.Item>
+                          <NavDropdown.Item
+                            as={Link}
+                            to={"/manage-product-rent"}
+                          >
+                            <Row className="align-items-center px-2 manage-dropdown">
+                              <Col
+                                className="d-flex justify-content-start p-0"
+                                xs="2"
+                              >
+                                <bi.Tags size={23} />
+                              </Col>
+                              <Col>ประเถทสินค้า</Col>
+                            </Row>
+                          </NavDropdown.Item>
+                          <NavDropdown.Item
+                            as={Link}
+                            to={"/manage-product-sell"}
+                          >
+                            <Row className="align-items-center px-2 manage-dropdown">
+                              <Col
+                                className="d-flex justify-content-start p-0"
+                                xs="2"
+                              >
+                                <bi.UpcScan size={23} />
+                              </Col>
+                              <Col>สินค้าขาย</Col>
+                            </Row>
+                          </NavDropdown.Item>
+                          <NavDropdown.Item
+                            as={Link}
+                            to={"/manage-product-rent"}
+                          >
+                            <Row className="align-items-center px-2 manage-dropdown">
+                              <Col
+                                className="d-flex justify-content-start p-0"
+                                xs="2"
+                              >
+                                <bi.FileText size={23} />
+                              </Col>
+                              <Col>สินค้าเช่า</Col>
+                            </Row>
                           </NavDropdown.Item>
                           <NavDropdown.Divider />
-                          <NavDropdown.Item>
-                            ชนิดวัสดุผลิตสินค้า
+                          <NavDropdown.Item as={Link} to={"/manage-users"}>
+                            <Row className="align-items-center px-2 manage-dropdown">
+                              <Col
+                                className="d-flex justify-content-start p-0"
+                                xs="2"
+                              >
+                                <bi.Person size={23} />
+                              </Col>
+                              <Col className="px-1">จัดการผู้ใช้งาน</Col>
+                            </Row>
                           </NavDropdown.Item>
                         </NavDropdown>
                       </Row>

@@ -1,9 +1,8 @@
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./delete-product-modal.component.css";
+import "./delete-product-modal.component.scss";
 import Button from "react-bootstrap/Button";
-import { useEffect, useState } from "react";
 import * as productService from "./../../../../../../services/product.service";
 
 const DeleteProductModalComponent = ({
@@ -12,17 +11,8 @@ const DeleteProductModalComponent = ({
   productId,
   table,
 }) => {
-  const [productImage, setProductImage] = useState("");
-
-  useEffect(() => {
-    if (deleteProductModalShow)
-      productService.getProductById(productId).then((res) => {
-        setProductImage(res.image);
-      });
-  }, [productId, deleteProductModalShow]);
-
   const deleteProduct = () => {
-    productService.deleteProduct(productId, productImage).then(() => {
+    productService.deleteProduct(productId).then(() => {
       table.draw();
       setDeleteProductModalShow(false);
     });

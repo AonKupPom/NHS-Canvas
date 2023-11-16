@@ -1,4 +1,4 @@
-import "./payment-shopping-product.component.css";
+import "./payment-shopping-product.component.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import PaymentTableComponent from "./payment-table/payment-table.component";

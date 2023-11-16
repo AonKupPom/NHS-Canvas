@@ -1,4 +1,4 @@
-import "./payment.component.css";
+import "./payment.component.scss";
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import EmptyPaymentShoppingComponent from "./empty-payment-shopping/empty-payment-shopping"

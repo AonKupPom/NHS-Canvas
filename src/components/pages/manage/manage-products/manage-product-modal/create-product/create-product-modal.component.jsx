@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./create-product-modal.component.css";
+import "./create-product-modal.component.scss";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
@@ -23,7 +23,7 @@ const CreateProductModalComponent = ({
   const [productImage, setProductImage] = useState("");
   const [productTypeClass, setProductTypeClass] =
     useState("productType-before");
-  const [allProductFile, setAllProductFile] = useState([]);
+  const [productUploadFile, setProductUploadFile] = useState([]);
   const [productAttribute, setProductAttribute] = useState([
     {
       id: uuid(),
@@ -48,7 +48,7 @@ const CreateProductModalComponent = ({
     setProductDescription("");
     setProductImage("");
     setProductTypeClass("productType-before");
-    setAllProductFile([]);
+    setProductUploadFile([]);
     setProductAttribute([
       {
         id: uuid(),
@@ -91,10 +91,11 @@ const CreateProductModalComponent = ({
           type: "application/json",
         })
       );
-      allProductFile.map((items) => {
-        formData.append("files", items);
+      productUploadFile.map((items) => {
+        formData.append("files", items.file);
         return null;
       });
+
       productService.newProduct(formData).then(() => {
         table.draw();
         setCreateProductModalShow(false);
@@ -151,7 +152,14 @@ const CreateProductModalComponent = ({
             [file],
             `${Date.now().toString()}.${file?.name?.split(".").pop()}`
           );
-          setAllProductFile([...allProductFile, newFile]);
+          const files = {
+            id,
+            file: newFile,
+          };
+          setProductUploadFile([
+            ...productUploadFile.filter((items) => items.id !== id),
+            files,
+          ]);
           if (index === 0) {
             setProductImage(newFile.name);
           }
@@ -210,13 +218,20 @@ const CreateProductModalComponent = ({
             className="mt-3"
             onSubmit={newProduct}
           >
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" controlId="name">
+            <Row className="align-items-center mb-3">
+              <Col
+                xs="3"
+                sm="2"
+                className="detail-title p-0 mx-3 d-flex justify-content-start"
+              >
+                ชื่อสินค้า :
+              </Col>
+              <Col className="p-0 mx-2">
+                <Form.Group controlId="name">
                   <Form.Control
                     className="p-2"
                     type="text"
-                    placeholder="ชื่อสินค้า"
+                    placeholder="กรุณาระบุชื่อสินค้า"
                     onChange={(e) => setProductName(e.target.value)}
                     required
                   />
@@ -226,9 +241,16 @@ const CreateProductModalComponent = ({
                 </Form.Group>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" controlId="type">
+            <Row className="align-items-center mb-3">
+              <Col
+                xs="3"
+                sm="2"
+                className="detail-title p-0 mx-3 d-flex justify-content-start"
+              >
+                ประเภท :
+              </Col>
+              <Col className="p-0 mx-2">
+                <Form.Group controlId="type">
                   <Form.Control
                     className={`${productTypeClass} p-2 form-select`}
                     as="select"
@@ -278,6 +300,11 @@ const CreateProductModalComponent = ({
                                 return productAttribute.id !== items.id;
                               })
                             );
+                            setProductUploadFile(
+                              productUploadFile.filter(
+                                (upload) => upload.id !== items.id
+                              )
+                            );
                           }}
                         />
                       </Col>
@@ -325,13 +352,16 @@ const CreateProductModalComponent = ({
                       </Col>
                     </Row>
                   )}
-                  <Row>
-                    <Col>
-                      <Form.Group className="mb-3" controlId="color">
+                  <Row className="align-items-center mb-3">
+                    <Col xs="4" sm="3" className="detail-title">
+                      สีสินค้า :
+                    </Col>
+                    <Col className="p-0 mx-2">
+                      <Form.Group controlId="color">
                         <Form.Control
                           className="p-2"
                           type="text"
-                          placeholder="สี"
+                          placeholder="กรุณาระบุสีสินค้า"
                           onChange={(e) => {
                             setProductColor(e.target.value, items.id);
                           }}
@@ -343,9 +373,12 @@ const CreateProductModalComponent = ({
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col className="d-flex">
-                      <Form.Group className="mb-3" controlId="width">
+                  <Row className="align-items-center mb-3">
+                    <Col xs="3" className="detail-title">
+                      ขนาด :
+                    </Col>
+                    <Col className="d-flex p-0 mx-2">
+                      <Form.Group controlId="width">
                         <Form.Control
                           className="p-2"
                           type="text"
@@ -359,7 +392,7 @@ const CreateProductModalComponent = ({
                           กรุณาระบุความกว้าง.
                         </Form.Control.Feedback>
                       </Form.Group>
-                      <Form.Group className="mb-3 mx-1" controlId="long">
+                      <Form.Group className="mx-1" controlId="long">
                         <Form.Control
                           className="p-2"
                           type="text"
@@ -373,7 +406,7 @@ const CreateProductModalComponent = ({
                           กรุณาระบุความยาว.
                         </Form.Control.Feedback>
                       </Form.Group>
-                      <Form.Group className="mb-3" controlId="height">
+                      <Form.Group controlId="height">
                         <Form.Control
                           className="p-2"
                           type="text"
@@ -389,13 +422,16 @@ const CreateProductModalComponent = ({
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col>
+                  <Row className="align-items-center">
+                    <Col xs="4" sm="3" className="detail-title">
+                      จำนวน :
+                    </Col>
+                    <Col className="p-0 mx-2">
                       <Form.Group controlId="stock">
                         <Form.Control
                           className="p-2"
                           type="text"
-                          placeholder="จำนวนสินค้า"
+                          placeholder="กรุณาระบุจำนวนสินค้า"
                           onChange={(e) =>
                             setProductStock(e.target.value, items.id)
                           }
@@ -414,7 +450,7 @@ const CreateProductModalComponent = ({
               <Col>
                 <Button
                   variant="primary"
-                  className="submit-login-button mb-3"
+                  className="new-product-attribute mb-3"
                   onClick={() => {
                     addNewProductAttribute();
                   }}
@@ -430,7 +466,7 @@ const CreateProductModalComponent = ({
                     className="p-2"
                     as="textarea"
                     rows={5}
-                    placeholder="รายละเอียด"
+                    placeholder="กรุณาระบุรายละเอียด"
                     onChange={(e) => setProductDescription(e.target.value)}
                     required
                   />
@@ -444,7 +480,7 @@ const CreateProductModalComponent = ({
               <Col className="d-flex justify-content-end">
                 <Button
                   variant="primary"
-                  className="submit-login-button"
+                  className="submit-button"
                   type="submit"
                 >
                   เพิ่มสินค้า

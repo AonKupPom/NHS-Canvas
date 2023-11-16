@@ -1,5 +1,5 @@
 import React from "react";
-import "./rent-tents-list.component.css";
+import "./rent-tents-list.component.scss";
 import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as faSol from "@fortawesome/free-solid-svg-icons";
@@ -26,7 +26,7 @@ const RentTentsList = () => {
     productRentService
       .getLazyProductRent(SKIP)
       .then((res) => {
-        console.log("res : ",res)
+        console.log("ProductRent : ",res)
         setTents(res);
       })
       .catch((err) => {

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as faSol from "@fortawesome/free-solid-svg-icons";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./empty-payment-shopping.component.css"
+import "./empty-payment-shopping.component.scss"
 
 const EmptyPaymentShoppingComponent = () => {
   return (

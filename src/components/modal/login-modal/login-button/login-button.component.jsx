@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import * as bi from "react-bootstrap-icons";
 import loginModalContext from "./../login-modal-context/loginModal.context";
-import "./login-button.component.css";
+import "./login-button.component.scss";
 import * as authService from "../../../../services/auth.service";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../../../redux/actions/auth.action";

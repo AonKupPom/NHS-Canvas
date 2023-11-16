@@ -3,7 +3,7 @@
     font-weight: bold;
 }
 
-#create-product-modal-body {
+#edit-product-rent-modal-body {
     height: 40%;
 }
 
@@ -15,12 +15,7 @@
     cursor: pointer;
 }
 
-.file-name-before {
-    font-size: calc(80% + 0.5vmin);
-    color: #7d858c;
-}
-
-.file-name-after {
+.detail-title {
     font-size: calc(80% + 0.5vmin);
     color: #212529;
 }
@@ -54,4 +49,18 @@
 .form-control:valid {
     border-color: none !important;
     background-image: none !important;
+}
+
+.submit-button {
+    width: 150px;
+    border-radius: 40px;
+}
+
+.new-product-attribute {
+    width: 170px;
+    border-radius: 40px;
+}
+
+.form-check-input {
+    cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './selling-tents-list.component.css';
+import './selling-tents-list.component.scss';
 import Button from 'react-bootstrap/esm/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faSol from '@fortawesome/free-solid-svg-icons';

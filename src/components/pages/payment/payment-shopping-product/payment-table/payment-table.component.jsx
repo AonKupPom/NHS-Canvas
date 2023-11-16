@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./payment-table.component.css"
+import "./payment-table.component.scss"
 
 const PaymentTableComponent = () => {
   const cart = useSelector((state) => state.cart);

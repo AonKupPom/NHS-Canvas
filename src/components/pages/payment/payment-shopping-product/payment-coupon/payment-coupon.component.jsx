@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import "./payment-coupon.component.css";
+import "./payment-coupon.component.scss";
 import * as bi from "react-bootstrap-icons";
 import CouponModalComponent from "../../../../modal/coupon-modal/coupon-modal.component";
 import { useState } from "react";

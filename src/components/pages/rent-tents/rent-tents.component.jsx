@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/esm/Container';
 import FilterRentTents from './filter-menu/filter-rent-tents.component';
 import Row from 'react-bootstrap/esm/Row'
 import Col from 'react-bootstrap/esm/Col';
-import './rent-tents.component.css';
+import './rent-tents.component.scss';
 import RentTentsList from './tents-list/rent-tents-list.component';
 
 const RentTents = () => {

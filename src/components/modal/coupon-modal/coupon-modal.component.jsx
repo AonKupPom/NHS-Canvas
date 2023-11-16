@@ -2,7 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import * as bi from "react-bootstrap-icons";
-import "./coupon-modal.component.css";
+import "./coupon-modal.component.scss";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 

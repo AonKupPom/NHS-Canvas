@@ -36,10 +36,10 @@ export const updateProduct = async (id, product) => {
     .then((response) => response.data);
 };
 
-export const deleteProduct = async (id, fileDelete) => {
+export const deleteProduct = async (id) => {
   return axios
     .delete(
-      `${process.env.REACT_APP_API_PATH}/api/product/delete/${id}/${fileDelete}`
+      `${process.env.REACT_APP_API_PATH}/api/product/delete/${id}`
     )
     .then((response) => response.data);
 };
