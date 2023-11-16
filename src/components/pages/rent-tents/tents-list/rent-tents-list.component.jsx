@@ -14,6 +14,7 @@ import loginModalContext from "./../../../modal/login-modal/login-modal-context/
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const RentTentsList = () => {
+  console.log('main')
   const [loginModalShow, setLoginModalShow] = useState(false);
   const [loginButtonTab, setLoginButtonTab] = useState("login-button-tab");
   const [loginFormTab, setLoginFormTab] = useState("login-form-tab");
